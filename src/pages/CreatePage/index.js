@@ -11,10 +11,13 @@ const CreatePage = () => {
   const [showRoundThree, setShowRoundThree] = useState(false);
 
   const [roundOneTopic, setRoundOneTopic] = useState("");
+  const [roundTwoTopic, setRoundTwoTopic] = useState("");
+  const [roundThreeTopic, setRoundThreeTopic] = useState("");
+
+  console.log([roundOneTopic, roundTwoTopic, roundThreeTopic]);
 
   const handleRoundOneRedirect = () => {
     if (!showRoundOne) {
-      console.log("round 1");
       setShowRoundOne(true);
       setShowRoundTwo(false);
       setShowRoundThree(false);
@@ -23,7 +26,6 @@ const CreatePage = () => {
   };
 
   const handleRoundTwoRedirect = () => {
-    console.log("round 2");
     if (!showRoundTwo) {
       setShowRoundOne(false);
       setShowRoundTwo(true);
@@ -33,7 +35,6 @@ const CreatePage = () => {
   };
 
   const handleRoundThreeRedirect = () => {
-    console.log("round 3");
     if (!showRoundThree) {
       setShowRoundOne(false);
       setShowRoundTwo(false);
@@ -41,44 +42,84 @@ const CreatePage = () => {
     }
   };
 
+  const updateRoundOneTopic = (topic) => {
+    setRoundOneTopic(topic);
+  };
+
+  const updateRoundTwoTopic = (topic) => {
+    setRoundTwoTopic(topic);
+  };
+
+  const updateRoundThreeTopic = (topic) => {
+    setRoundThreeTopic(topic);
+  };
+
   return (
     <div className="create-page">
       <Banner />
       <form>
-        <div className="difficulty">
-          <h2>Select difficulty:</h2>
-          <div>
-            <input type="button" className="select-button" value="Easy" />
-            <input type="button" className="select-button"  value="Medium" />
-            <input type="button" className="select-button"  value="Hard" />
+
+        <div className="select-difficulty-container">
+          <h2>Select difficulty</h2>
+          <div className="difficulty-buttons-container">
+            <input
+              type="button"
+              className="difficulty-button easy-button"
+              value="Easy"
+            />
+            <input
+              type="button"
+              className="difficulty-button medium-button"
+              value="Medium"
+            />
+            <input
+              type="button"
+              className="difficulty-button hard-button"
+              value="Hard"
+            />
           </div>
         </div>
-        <div className="rounds">
-        <h2>Select one topic for each round:</h2>
-          <input
-            onClick={handleRoundOneRedirect}
-            type="button"
-            value="Round 1"
-            className="select-button"
-          />
-          <input
-            onClick={handleRoundTwoRedirect}
-            type="button"
-            value="Round 2"
-            className="select-button" 
-          />
-          <input
-            onClick={handleRoundThreeRedirect}
-            type="button"
-            value="Round 3"
-            className="select-button" 
-          />
+        <div className="select-round-container">
+          <h2>Select 3 topics</h2>
+          <div className="round-buttons-container">
+            <input
+              className="round-button"
+              onClick={handleRoundOneRedirect}
+              type="button"
+              value="Round 1"
+            />
+            <input
+              className="round-button"
+              onClick={handleRoundTwoRedirect}
+              type="button"
+              value="Round 2"
+            />
+            <input
+              className="round-button"
+              onClick={handleRoundThreeRedirect}
+              type="button"
+              value="Round 3"
+            />
+          </div>
+
         </div>
-        <div>
-          {showRoundOne ? <Topics /> : <p>round 1</p>}
-          {showRoundTwo ? <Topics /> : <p>round 2</p>}
-          {showRoundThree ? <Topics /> : <p>round 3</p>}
-        </div>
+
+        {showRoundOne ? (
+          <Topics updateTopic={updateRoundOneTopic} topic={roundOneTopic} />
+        ) : (
+          <></>
+        )}
+        {showRoundTwo ? (
+          <Topics updateTopic={updateRoundTwoTopic} topic={roundTwoTopic} />
+        ) : (
+          <></>
+        )}
+        {showRoundThree ? (
+          <Topics updateTopic={updateRoundThreeTopic} topic={roundThreeTopic} />
+        ) : (
+          <></>
+        )}
+
         <input type="submit" value="Create quiz!" />
       </form>
     </div>
