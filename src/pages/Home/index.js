@@ -1,6 +1,7 @@
 // HOMEPAGE
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Banner from "../../components/Banner";
 
@@ -11,12 +12,21 @@ import LastActiveCard from "../../components/LastActiveCard";
 import "./Home.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const createQuiz = () => {
+    navigate("/create");
+  };
+
   return (
     <>
       <Banner />
       <div className="home-content">
         <div className="buttons-container">
-          <ButtonControl buttonText={"Create a quiz!"} />
+          <ButtonControl
+            buttonHandler={createQuiz}
+            buttonText={"Create a quiz!"}
+          />
           <ButtonControl buttonText={"Join a quiz!"} />
         </div>
         <HighScoreCard />
