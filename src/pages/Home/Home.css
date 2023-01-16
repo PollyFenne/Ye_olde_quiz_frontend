@@ -8,26 +8,29 @@
   --vintagebrown: #e6bc9e;
 }
 
-body {
-  background-color: var(--vintagewhite);
-  font-family: "Lato", sans-serif;
-}
-
 * {
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
+  box-sizing: border-box;
+}
+
+#root {
+  background-color: var(--vintagewhite);
+  font-family: "Lato", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* BANNER STYLING */
 
 .banner {
+  flex: 0, 1, auto;
   background-color: var(--vintagebrown);
   display: flex;
-  width: 100%;
-  height: 100%;
   padding: 30px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 .logo img {
@@ -38,13 +41,18 @@ body {
 /* HOMEPAGE STYLING */
 
 .home-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   background-color: var(--vintagewhite);
-  height: 100vh;
   border-radius: 20px;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .buttons-container {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
 }
