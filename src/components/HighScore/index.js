@@ -1,1 +1,0 @@
-// User HIGH SCORE component
