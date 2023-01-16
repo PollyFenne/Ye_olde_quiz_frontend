@@ -19,6 +19,7 @@ const CreatePage = () => {
       setShowRoundTwo(false);
       setShowRoundThree(false);
     }
+
   };
 
   const handleRoundTwoRedirect = () => {
@@ -27,6 +28,7 @@ const CreatePage = () => {
       setShowRoundOne(false);
       setShowRoundTwo(true);
       setShowRoundThree(false);
+
     }
   };
 
@@ -40,33 +42,36 @@ const CreatePage = () => {
   };
 
   return (
-    <>
+    <div className="create-page">
       <Banner />
       <form>
-        <div>
-          <h2>Select difficulty</h2>
+        <div className="difficulty">
+          <h2>Select difficulty:</h2>
           <div>
-            <input type="button" className="difficulty-button" value="Easy" />
-            <input type="button" className="difficulty-button" value="Medium" />
-            <input type="button" className="difficulty-button" value="Hard" />
+            <input type="button" className="select-button" value="Easy" />
+            <input type="button" className="select-button"  value="Medium" />
+            <input type="button" className="select-button"  value="Hard" />
           </div>
         </div>
-        <h2>Select 3 topics</h2>
-        <div>
+        <div className="rounds">
+        <h2>Select one topic for each round:</h2>
           <input
             onClick={handleRoundOneRedirect}
             type="button"
             value="Round 1"
+            className="select-button"
           />
           <input
             onClick={handleRoundTwoRedirect}
             type="button"
             value="Round 2"
+            className="select-button" 
           />
           <input
             onClick={handleRoundThreeRedirect}
             type="button"
             value="Round 3"
+            className="select-button" 
           />
         </div>
         <div>
@@ -76,7 +81,7 @@ const CreatePage = () => {
         </div>
         <input type="submit" value="Create quiz!" />
       </form>
-    </>
+    </div>
   );
 };
 

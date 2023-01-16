@@ -1,14 +1,15 @@
 import React from "react";
+import "./styles.css";
 
 const Topics = () => {
   return (
-    <div>
+    <div className="topics">
       <ul>
-        <li>
+        <li className="select-btn">
           <label htmlFor="knowledge" >General Knowledge</label>
           <input type="radio" value="General-Knowledge" id="knowledge" name="topics"/>
         </li>
-        <li>
+        <li className="select-btn">
           <label htmlFor="sports" >Sports</label>
           <input type="radio" value="Sports" id="sports" name="topics"/>
         </li>
@@ -47,6 +48,10 @@ const Topics = () => {
         <li>
           <label htmlFor="science-nature" >Science and Nature</label>
           <input type="radio" value="Science-Nature" id="science-nature"name="topics"/>
+        </li>
+        <li>
+          <label htmlFor="celebrities" >Celebrities</label>
+          <input type="radio" value="Celebrities" id="celebrities"name="topics"/>
         </li>
       </ul>
     </div>
