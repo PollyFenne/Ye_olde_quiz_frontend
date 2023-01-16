@@ -1,16 +1,23 @@
+// LOGIN user component
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types'; // Do I need this?
 
 // Fetching user data from API
 async function loginUser(credentials) {
-    return fetch('http://localhost:8080/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application.json'
-        },
-        body: JSON.stringify(credentials)
-    })
-    .then(data => data.json())
+    try {
+        return await fetch('http://localhost:8080/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application.json'
+            },
+            body: JSON.stringify(credentials)
+        })
+        .then(data => data.json())
+    }
+    catch (err) {
+        console.warn(err)
+    }
 };
 
 
@@ -29,22 +36,27 @@ const Login = ({ setToken }) => {
     }
 
   return (
-    <div className='login'>
-        <h1>Please Login</h1>
-        <form onSubmit={handleSubmit}>
-            <label>
-                <p>Username</p>
-                <input type="text" onChange={e => setUsername(e.target.value)}/>
-            </label>
-            <label>
-                <p>Password</p>
-                <input type="password" onChange={e => setPassword(e.target.value)}/>
-            </label>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
+    <>
+        <div className='login'>
+            <h1>Please Login</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-username">
+                    <label for="login-username" className='label'>Username</label>
+                    <input type="text" className="form-input" id="login-username" onChange={e => setUsername(e.target.value)}/>
+                </div>
+                <div className="form-password">
+                    <label for="login-password" className='label'>Password</label>
+                    <input type="password" className="form-input" id="login-password" onChange={e => setPassword(e.target.value)}/>
+                </div>
+                <div className='submit-btn'>
+                    <button type="submit" className='btn'>Submit</button>
+                </div>
+            </form>
+        </div>
+        <div className='redirect'>
+            <h2>Don't have an account? Login here</h2> 
+        </div>
+    </>
   )
 };
 
