@@ -1,11 +1,13 @@
+/* HomePage styling  */
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-  --vintagered: #e64f30;
-  --vintageblue: #23c3b5;
-  --vintageyellow: #ffbe2d;
+  --vintagered: #C84639;
+  --vintageblue: #6DB4B0;
+  --vintageyellow: #E2AE47;
   --vintagewhite: #fff3e3;
-  --vintagebrown: #e6bc9e;
+  --vintagebrown: #E9D6AF;
 }
 
 html {

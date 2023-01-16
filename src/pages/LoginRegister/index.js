@@ -3,6 +3,7 @@
 import React from "react";
 import { useState } from "react";
 
+import "./styles.css";
 import Login from "../../components/Login.js";
 import Register from "../../components/Register";
 
@@ -16,9 +17,9 @@ const LoginRegister = () => {
     }
 
     return (
-        <>
+        <div className="login-content">
             {showRegister? <Register handleRedirect={handleRedirect}/> : <Login handleRedirect={handleRedirect} /> }
-        </>
+        </div>
     )
 };
 
