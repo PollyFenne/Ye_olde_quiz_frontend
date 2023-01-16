@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 
@@ -19,7 +18,6 @@ const Topics = ({ updateTopic, topic }) => {
   return (
     <div className="topics">
       <ul>
-
         <li>
           <label htmlFor="general-knowledge"></label>
           <input
@@ -41,7 +39,6 @@ const Topics = ({ updateTopic, topic }) => {
             name="sports"
             onClick={handleRadioClick}
           />
-
         </li>
         <li>
           <label htmlFor="geography"></label>
@@ -144,6 +141,7 @@ const Topics = ({ updateTopic, topic }) => {
         </li>
         <li>
           <label htmlFor="celebrities"></label>
+
           <input 
           className="topic-button"
           type="button" 
@@ -151,6 +149,7 @@ const Topics = ({ updateTopic, topic }) => {
           id="celebrities"
           name="topics"
           onClick={handleRadioClick}/>
+
         </li>
       </ul>
     </div>
