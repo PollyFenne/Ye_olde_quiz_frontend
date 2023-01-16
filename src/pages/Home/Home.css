@@ -1,44 +1,42 @@
-
 :root {
-    --vintagered: #E64F30;
-    --vintageblue: #23C3B5;
-    --vintageyellow: #FFBE2D;
-    --vintagewhite: #FFF3E3;
-    --vintagebrown: #E6BC9E;
+  --vintagered: #e64f30;
+  --vintageblue: #23c3b5;
+  --vintageyellow: #ffbe2d;
+  --vintagewhite: #fff3e3;
+  --vintagebrown: #e6bc9e;
 }
 
 body {
-    background-color: var(--vintagewhite);
+  background-color: var(--vintagewhite);
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 /* BANNER STYLING */
 
 .banner {
-    background-color: var(--vintagebrown);
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-    border-radius: 20px;
+  background-color: var(--vintagebrown);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  border-radius: 20px;
 }
 
 .logo img {
-    height: 3rem;
-    width: 5rem;
+  height: 3rem;
+  width: 5rem;
 }
 
 /* HOMEPAGE STYLING */
 
 .home-content {
-    background-color: var(--vintagebrown);
-    height: 100vh;
-    border-radius: 20px;
-    margin-top: 10%;
+  background-color: var(--vintagewhite);
+  height: 100vh;
+  border-radius: 20px;
+  margin-top: 10%;
 }
-
