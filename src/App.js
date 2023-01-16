@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import { Home, CreatePage } from "./pages";
-import Login from "./components/Login.js";
 import LoginRegister from "./pages/LoginRegister";
 import useToken from "./components/useToken";
 
