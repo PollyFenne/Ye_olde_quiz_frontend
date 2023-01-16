@@ -10,6 +10,8 @@ const CreatePage = () => {
   const [showRoundTwo, setShowRoundTwo] = useState(false);
   const [showRoundThree, setShowRoundThree] = useState(false);
 
+  const [roundOneTopic, setRoundOneTopic] = useState("");
+
   const handleRoundOneRedirect = () => {
     if (!showRoundOne) {
       console.log("round 1");

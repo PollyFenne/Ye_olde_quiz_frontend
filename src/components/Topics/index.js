@@ -5,59 +5,48 @@ const Topics = () => {
     <div>
       <ul>
         <li>
-          <button type="button" value="General Knowledge">
-            General Knowledge
-          </button>
+          <label htmlFor="knowledge" >General Knowledge</label>
+          <input type="radio" value="General-Knowledge" id="knowledge" name="topics"/>
         </li>
         <li>
-          <button type="button" value="Sports">
-            Sports
-          </button>
+          <label htmlFor="sports" >Sports</label>
+          <input type="radio" value="Sports" id="sports" name="topics"/>
         </li>
         <li>
-          <button type="button" value="Geography">
-            Geography
-          </button>
+          <label htmlFor="geography" >Geography</label>
+          <input type="radio" value="Geography" id="geography" name="topics"/>
         </li>
         <li>
-          <button type="button" value="History">
-            History
-          </button>
+          <label htmlFor="history" >History</label>
+          <input type="radio" value="History" id="history"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Politics">
-            Politics
-          </button>
+          <label htmlFor="politics" >Politics</label>
+          <input type="radio" value="Politics" id="politics"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Art">
-            Art
-          </button>
+          <label htmlFor="art" >Art</label>
+          <input type="radio" value="Art" id="art"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Film">
-            Film
-          </button>
+          <label htmlFor="film" >Film</label>
+          <input type="radio" value="Film" id="film"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Television">
-            Television
-          </button>
+          <label htmlFor="television" >Television</label>
+          <input type="radio" value="Television" id="television"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Literature">
-            Literature
-          </button>
+          <label htmlFor="literature" >Literature</label>
+          <input type="radio" value="Literature" id="literature"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Music">
-            Music
-          </button>
+          <label htmlFor="music" >Music</label>
+          <input type="radio" value="Music" id="music"name="topics"/>
         </li>
         <li>
-          <button type="button" value="Science and Nature">
-            Science and Nature
-          </button>
+          <label htmlFor="science-nature" >Science and Nature</label>
+          <input type="radio" value="Science-Nature" id="science-nature"name="topics"/>
         </li>
       </ul>
     </div>

@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 
 import "./styles.css";
-import Login from "../../components/Login.js";
+import Login from "../../components/Login/index.js";
 import Register from "../../components/Register";
 
 const LoginRegister = () => {
