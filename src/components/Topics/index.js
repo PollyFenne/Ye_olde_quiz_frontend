@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 
 const Topics = ({ updateTopic, topic }) => {
@@ -14,9 +15,13 @@ const Topics = ({ updateTopic, topic }) => {
     updateTopic(e.target.value);
   };
 
+import "./styles.css";
+
+
   return (
-    <div>
+    <div className="topics">
       <ul>
+
         <li>
           <label htmlFor="general-knowledge"></label>
           <input
@@ -38,6 +43,7 @@ const Topics = ({ updateTopic, topic }) => {
             name="sports"
             onClick={handleRadioClick}
           />
+
         </li>
         <li>
           <label htmlFor="geography"></label>
@@ -137,6 +143,10 @@ const Topics = ({ updateTopic, topic }) => {
             name="topics"
             onClick={handleRadioClick}
           />
+        </li>
+        <li>
+          <label htmlFor="celebrities" >Celebrities</label>
+          <input type="radio" value="Celebrities" id="celebrities"name="topics"/>
         </li>
       </ul>
     </div>

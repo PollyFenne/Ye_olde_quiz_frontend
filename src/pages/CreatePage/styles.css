@@ -1,10 +1,16 @@
 /* CreatePage styling  */
 
+
 .select-difficulty-container {
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+.create-page {
+  background-color: var(--vintagewhite);
+  border-radius: 20px;
+
 }
 
 form {
@@ -66,6 +72,7 @@ form {
   gap: 10px;
 }
 
+
 .round-button {
   background-color: transparent;
   border-radius: 5px;
@@ -74,4 +81,13 @@ form {
   height: 50px;
   font-family: "Lato", sans-serif;
   font-size: 1.4rem;
+
 }
+
+.select-button:hover {
+  background-color: var(--vintagered);
+}
+
+
+
+

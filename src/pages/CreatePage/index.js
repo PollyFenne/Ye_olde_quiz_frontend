@@ -22,6 +22,7 @@ const CreatePage = () => {
       setShowRoundTwo(false);
       setShowRoundThree(false);
     }
+
   };
 
   const handleRoundTwoRedirect = () => {
@@ -29,6 +30,7 @@ const CreatePage = () => {
       setShowRoundOne(false);
       setShowRoundTwo(true);
       setShowRoundThree(false);
+
     }
   };
 
@@ -53,9 +55,10 @@ const CreatePage = () => {
   };
 
   return (
-    <>
+    <div className="create-page">
       <Banner />
       <form>
+
         <div className="select-difficulty-container">
           <h2>Select difficulty</h2>
           <div className="difficulty-buttons-container">
@@ -98,6 +101,7 @@ const CreatePage = () => {
               value="Round 3"
             />
           </div>
+
         </div>
 
         {showRoundOne ? (
@@ -118,7 +122,7 @@ const CreatePage = () => {
 
         <input type="submit" value="Create quiz!" />
       </form>
-    </>
+    </div>
   );
 };
 

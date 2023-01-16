@@ -1,0 +1,23 @@
+/* Topics styling */
+
+
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+li {
+    font-size: 1.5rem;
+    background-color: var(--vintageyellow);
+    padding: 30px;
+    border-radius: 20px;
+    display: grid;
+    text-align: center;
+    margin: 15px;
+}
+
+li input {
+    visibility: hidden;
+}
+
