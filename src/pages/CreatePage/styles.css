@@ -166,6 +166,7 @@ form {
   font-weight: bold;
   border-radius: 20px;
   border: 2px solid var(--vintagered);
+  cursor: pointer;
 }
 
 .submit-button:hover {

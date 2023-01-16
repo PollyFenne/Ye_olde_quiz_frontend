@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 
-import Banner from "../../components/Banner";
 import Topics from "../../components/Topics";
 
 import "./styles.css";
 
 const CreatePage = () => {
+  const [color, setColor] = useState("#6db4b0");
+
   const [showRoundOne, setShowRoundOne] = useState(true);
   const [showRoundTwo, setShowRoundTwo] = useState(false);
   const [showRoundThree, setShowRoundThree] = useState(false);
@@ -79,21 +80,27 @@ const CreatePage = () => {
     setEasyActive(true);
     setMediumActive(false);
     setHardActive(false);
+
+    setColor("#6db4b0");
   };
 
   const handleClickMedium = () => {
     setEasyActive(false);
     setMediumActive(true);
     setHardActive(false);
+
+    setColor("#e2ae47");
   };
 
   const handleClickHard = () => {
     setEasyActive(false);
     setMediumActive(false);
     setHardActive(true);
+
+    setColor("#c84639");
   };
 
-  const renderRoundButtonClassNames = (activeRound) => {
+  const setRoundButtonClassNames = (activeRound) => {
     if (activeRound) {
       if (easyActive) {
         return "round-button round-button-easy-active";
@@ -161,19 +168,19 @@ const CreatePage = () => {
           <h2>Select 3 topics</h2>
           <div className="round-buttons-container">
             <input
-              className={renderRoundButtonClassNames(roundOneActive)}
+              className={setRoundButtonClassNames(roundOneActive)}
               onClick={handleRoundOne}
               type="button"
               value="Round 1"
             />
             <input
-              className={renderRoundButtonClassNames(roundTwoActive)}
+              className={setRoundButtonClassNames(roundTwoActive)}
               onClick={handleRoundTwo}
               type="button"
               value="Round 2"
             />
             <input
-              className={renderRoundButtonClassNames(roundThreeActive)}
+              className={setRoundButtonClassNames(roundThreeActive)}
               onClick={handleRoundThree}
               type="button"
               value="Round 3"
@@ -182,17 +189,29 @@ const CreatePage = () => {
         </div>
 
         {showRoundOne ? (
-          <Topics updateTopic={updateRoundOneTopic} topic={roundOneTopic} />
+          <Topics
+            color={color}
+            updateTopic={updateRoundOneTopic}
+            topic={roundOneTopic}
+          />
         ) : (
           <></>
         )}
         {showRoundTwo ? (
-          <Topics updateTopic={updateRoundTwoTopic} topic={roundTwoTopic} />
+          <Topics
+            color={color}
+            updateTopic={updateRoundTwoTopic}
+            topic={roundTwoTopic}
+          />
         ) : (
           <></>
         )}
         {showRoundThree ? (
-          <Topics updateTopic={updateRoundThreeTopic} topic={roundThreeTopic} />
+          <Topics
+            color={color}
+            updateTopic={updateRoundThreeTopic}
+            topic={roundThreeTopic}
+          />
         ) : (
           <></>
         )}

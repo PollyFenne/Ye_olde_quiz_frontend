@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import "./styles.css";
 
-const Topics = ({ updateTopic, topic }) => {
+const Topics = ({ color, updateTopic, topic }) => {
   useEffect(() => {
     const topicButtons = document.querySelectorAll(".topic-button");
     topicButtons.forEach((button) => {
       if (topic == button.value) {
-        button.style.backgroundColor = "red";
+        button.style.backgroundColor = color;
+        button.style.color = "#fff3e3";
       } else {
         button.style.backgroundColor = "transparent";
+        button.style.color = color;
       }
     });
   });
@@ -17,13 +19,25 @@ const Topics = ({ updateTopic, topic }) => {
     updateTopic(e.target.value);
   };
 
+  const renderColorClass = () => {
+    if (color == "#6db4b0") {
+      return "topic-button topic-button-easy";
+    }
+    if (color == "#e2ae47") {
+      return "topic-button topic-button-medium";
+    }
+    if (color == "#c84639") {
+      return "topic-button topic-button-hard";
+    }
+  };
+
   return (
     <div className="topics-container">
       <ul className="topics">
         <li className="topic-list-item">
           <label htmlFor="general-knowledge"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="General Knowledge"
             id="general-knowledge"
@@ -34,7 +48,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="sports"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Sports"
             id="sports"
@@ -45,7 +59,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="geography"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Geography"
             id="geography"
@@ -56,7 +70,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="history"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="History"
             id="history"
@@ -67,7 +81,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="politics"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Politics"
             id="politics"
@@ -78,7 +92,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="art"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Art"
             id="art"
@@ -89,7 +103,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="film"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Film"
             id="film"
@@ -100,7 +114,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="television"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Television"
             id="television"
@@ -111,7 +125,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="literature"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Literature"
             id="literature"
@@ -122,7 +136,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="music"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Music"
             id="music"
@@ -133,7 +147,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="science-nature"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Science-Nature"
             id="science-nature"
@@ -144,7 +158,7 @@ const Topics = ({ updateTopic, topic }) => {
         <li className="topic-list-item">
           <label htmlFor="celebrities"></label>
           <input
-            className="topic-button"
+            className={renderColorClass()}
             type="button"
             value="Celebrities"
             id="celebrities"
