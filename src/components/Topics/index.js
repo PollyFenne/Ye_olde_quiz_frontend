@@ -141,12 +141,15 @@ const Topics = ({ updateTopic, topic }) => {
         </li>
         <li>
           <label htmlFor="celebrities"></label>
-          <input
-            type="button"
-            value="Celebrities"
-            id="celebrities"
-            name="topics"
-          />
+
+          <input 
+          className="topic-button"
+          type="button" 
+          value="Celebrities" 
+          id="celebrities"
+          name="topics"
+          onClick={handleRadioClick}/>
+
         </li>
       </ul>
     </div>
