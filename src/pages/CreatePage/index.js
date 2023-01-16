@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import Topics from "../../components/Topics";
+import Banner from "../../components/Banner";
 
 import "./styles.css";
 
@@ -127,98 +128,99 @@ const CreatePage = () => {
   };
 
   return (
-    <div className="create-page">
-      <form>
-        <div className="select-difficulty-container">
-          <h2>Select difficulty</h2>
-          <div className="difficulty-buttons-container">
-            <input
-              type="button"
-              className={
-                easyActive
-                  ? "difficulty-button easy-button-clicked"
-                  : "difficulty-button easy-button"
-              }
-              value="Easy"
-              onClick={handleClickEasy}
-            />
-            <input
-              type="button"
-              className={
-                mediumActive
-                  ? "difficulty-button medium-button-clicked"
-                  : "difficulty-button medium-button"
-              }
-              value="Medium"
-              onClick={handleClickMedium}
-            />
-            <input
-              type="button"
-              className={
-                hardActive
-                  ? "difficulty-button hard-button-clicked"
-                  : "difficulty-button hard-button"
-              }
-              value="Hard"
-              onClick={handleClickHard}
-            />
+    <>
+      <Banner isCreate={true} />
+      <div className="create-page">
+        <form>
+          <div className="select-difficulty-container">
+            <h2>Select difficulty</h2>
+            <div className="difficulty-buttons-container">
+              <input
+                type="button"
+                className={
+                  easyActive
+                    ? "difficulty-button easy-button-clicked"
+                    : "difficulty-button easy-button"
+                }
+                value="Easy"
+                onClick={handleClickEasy}
+              />
+              <input
+                type="button"
+                className={
+                  mediumActive
+                    ? "difficulty-button medium-button-clicked"
+                    : "difficulty-button medium-button"
+                }
+                value="Medium"
+                onClick={handleClickMedium}
+              />
+              <input
+                type="button"
+                className={
+                  hardActive
+                    ? "difficulty-button hard-button-clicked"
+                    : "difficulty-button hard-button"
+                }
+                value="Hard"
+                onClick={handleClickHard}
+              />
+            </div>
           </div>
-        </div>
-        <div className="select-round-container">
-          <h2>Select 3 topics</h2>
-          <div className="round-buttons-container">
-            <input
-              className={setRoundButtonClassNames(roundOneActive)}
-              onClick={handleRoundOne}
-              type="button"
-              value="Round 1"
-            />
-            <input
-              className={setRoundButtonClassNames(roundTwoActive)}
-              onClick={handleRoundTwo}
-              type="button"
-              value="Round 2"
-            />
-            <input
-              className={setRoundButtonClassNames(roundThreeActive)}
-              onClick={handleRoundThree}
-              type="button"
-              value="Round 3"
-            />
+          <div className="select-round-container">
+            <h2>Select 3 topics</h2>
+            <div className="round-buttons-container">
+              <input
+                className={setRoundButtonClassNames(roundOneActive)}
+                onClick={handleRoundOne}
+                type="button"
+                value="Round 1"
+              />
+              <input
+                className={setRoundButtonClassNames(roundTwoActive)}
+                onClick={handleRoundTwo}
+                type="button"
+                value="Round 2"
+              />
+              <input
+                className={setRoundButtonClassNames(roundThreeActive)}
+                onClick={handleRoundThree}
+                type="button"
+                value="Round 3"
+              />
+            </div>
           </div>
-        </div>
-
-        {showRoundOne ? (
-          <Topics
-            color={color}
-            updateTopic={updateRoundOneTopic}
-            topic={roundOneTopic}
-          />
-        ) : (
-          <></>
-        )}
-        {showRoundTwo ? (
-          <Topics
-            color={color}
-            updateTopic={updateRoundTwoTopic}
-            topic={roundTwoTopic}
-          />
-        ) : (
-          <></>
-        )}
-        {showRoundThree ? (
-          <Topics
-            color={color}
-            updateTopic={updateRoundThreeTopic}
-            topic={roundThreeTopic}
-          />
-        ) : (
-          <></>
-        )}
-
-        <input type="submit" className="submit-button" value="Create quiz!" />
-      </form>
-    </div>
+          {showRoundOne ? (
+            <Topics
+              color={color}
+              updateTopic={updateRoundOneTopic}
+              topic={roundOneTopic}
+            />
+          ) : (
+            <></>
+          )}
+          {showRoundTwo ? (
+            <Topics
+              color={color}
+              updateTopic={updateRoundTwoTopic}
+              topic={roundTwoTopic}
+            />
+          ) : (
+            <></>
+          )}
+          {showRoundThree ? (
+            <Topics
+              color={color}
+              updateTopic={updateRoundThreeTopic}
+              topic={roundThreeTopic}
+            />
+          ) : (
+            <></>
+          )}
+          <input type="submit" className="submit-button" value="Create quiz!" />
+        </form>
+      </div>
+    </>
   );
 };
 

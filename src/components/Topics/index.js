@@ -149,7 +149,7 @@ const Topics = ({ color, updateTopic, topic }) => {
           <input
             className={renderColorClass()}
             type="button"
-            value="Science-Nature"
+            value="Science & Nature"
             id="science-nature"
             name="topics"
             onClick={handleRadioClick}

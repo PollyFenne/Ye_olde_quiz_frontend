@@ -25,7 +25,9 @@ html {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 150px;
+
+  justify-content: space-between;
+  padding: 100px 120px;
 }
 
 .home-content {
