@@ -1,0 +1,26 @@
+/* BANNER STYLING */
+
+.banner {
+  background-color: var(--vintagewhite);
+  flex: 0, 1, auto;
+  display: flex;
+  padding: 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.logo img {
+  margin-right: 20px;
+}
+
+.back-button {
+  text-decoration: none;
+  color: black;
+}
+
+/* HOMEPAGE ONLY */
+
+.home-banner {
+  display: flex;
+  justify-content: space-between;
+}

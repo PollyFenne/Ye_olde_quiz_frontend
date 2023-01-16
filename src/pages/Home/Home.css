@@ -1,17 +1,17 @@
-/* HomePage styling  */
+/* HOMEPAGE STYLING  */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-  --vintagered: #C84639;
-  --vintageblue: #6DB4B0;
-  --vintageyellow: #E2AE47;
+  --vintagered: #c84639;
+  --vintageblue: #6db4b0;
+  --vintageyellow: #e2ae47;
   --vintagewhite: #fff3e3;
-  --vintagebrown: #E9D6AF;
+  --vintagebrown: #e9d6af;
 }
 
 html {
-  background-image: url('../../assets/images/background.webp');
+  background-image: url("../../assets/images/background.webp");
 }
 
 * {
@@ -27,25 +27,6 @@ html {
   flex-direction: column;
   margin: 150px;
 }
-
-
-/* BANNER STYLING */
-
-.banner {
-  background-color: var(--vintagewhite);
-  flex: 0, 1, auto;
-  display: flex;
-  padding: 30px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.logo img {
-  margin-right: 20px;
-}
-
-
-/* HOMEPAGE STYLING */
 
 .home-content {
   flex-grow: 1;
