@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types'; // Do I need this?
+import Register from '../Register';
 
 // Fetching user data from API
 async function loginUser(credentials) {
@@ -21,7 +22,7 @@ async function loginUser(credentials) {
 };
 
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, handleRedirect }) => {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
@@ -35,17 +36,18 @@ const Login = ({ setToken }) => {
         setToken(token)
     }
 
+
   return (
     <>
         <div className='login'>
             <h1>Please Login</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-username">
-                    <label for="login-username" className='label'>Username</label>
+                    <label htmlFor="login-username" className='label'>Username</label>
                     <input type="text" className="form-input" id="login-username" onChange={e => setUsername(e.target.value)}/>
                 </div>
                 <div className="form-password">
-                    <label for="login-password" className='label'>Password</label>
+                    <label htmlFor="login-password" className='label'>Password</label>
                     <input type="password" className="form-input" id="login-password" onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <div className='submit-btn'>
@@ -54,7 +56,7 @@ const Login = ({ setToken }) => {
             </form>
         </div>
         <div className='redirect'>
-            <h2>Don't have an account? Login here</h2> 
+            <h2>Don't have an account? Register <span onClick={handleRedirect}>here</span></h2> 
         </div>
     </>
   )

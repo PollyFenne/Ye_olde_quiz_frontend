@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 
 
-const Register = () => {
+const Register = ({ handleRedirect }) => {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
@@ -34,11 +34,11 @@ const Register = () => {
             <h1>Please Register</h1>
             <form onSubmit={ handleSubmit }>
                 <div className="form-username">
-                    <label for="register-username" className='label'>Username</label>
+                    <label htmlFor="register-username" className='label'>Username</label>
                     <input type="text" className="form-input" id="register-username" onChange={e => setUsername(e.target.value)}/>
                 </div>
                 <div className="form-password">
-                    <label for="register-password" className='label'>Password</label>
+                    <label htmlFor="register-password" className='label'>Password</label>
                     <input type="password" className="form-input" id="register-password" onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <div className='submit-btn'>
@@ -47,8 +47,8 @@ const Register = () => {
             </form>
             </div>
             <div className='redirect'>
-                <h2>Don't have an account? Login here</h2> 
-            </div>
+            <h2>Already have an account? Login <span onClick={handleRedirect}>here</span></h2> 
+        </div>
         </>
     )
 };
