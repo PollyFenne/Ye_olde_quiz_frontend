@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
 
 const Topics = ({ updateTopic, topic }) => {
@@ -7,6 +7,8 @@ const Topics = ({ updateTopic, topic }) => {
     topicButtons.forEach((button) => {
       if (topic == button.value) {
         button.style.backgroundColor = "red";
+      } else {
+        button.style.backgroundColor = "transparent";
       }
     });
   });
@@ -16,9 +18,9 @@ const Topics = ({ updateTopic, topic }) => {
   };
 
   return (
-    <div className="topics">
-      <ul>
-        <li>
+    <div className="topics-container">
+      <ul className="topics">
+        <li className="topic-list-item">
           <label htmlFor="general-knowledge"></label>
           <input
             className="topic-button"
@@ -29,7 +31,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="sports"></label>
           <input
             className="topic-button"
@@ -40,7 +42,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="geography"></label>
           <input
             className="topic-button"
@@ -51,7 +53,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="history"></label>
           <input
             className="topic-button"
@@ -62,7 +64,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="politics"></label>
           <input
             className="topic-button"
@@ -73,7 +75,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="art"></label>
           <input
             className="topic-button"
@@ -84,7 +86,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="film"></label>
           <input
             className="topic-button"
@@ -95,7 +97,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="television"></label>
           <input
             className="topic-button"
@@ -106,7 +108,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="literature"></label>
           <input
             className="topic-button"
@@ -117,7 +119,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="music"></label>
           <input
             className="topic-button"
@@ -128,7 +130,7 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="science-nature"></label>
           <input
             className="topic-button"
@@ -139,17 +141,16 @@ const Topics = ({ updateTopic, topic }) => {
             onClick={handleRadioClick}
           />
         </li>
-        <li>
+        <li className="topic-list-item">
           <label htmlFor="celebrities"></label>
-
-          <input 
-          className="topic-button"
-          type="button" 
-          value="Celebrities" 
-          id="celebrities"
-          name="topics"
-          onClick={handleRadioClick}/>
-
+          <input
+            className="topic-button"
+            type="button"
+            value="Celebrities"
+            id="celebrities"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
       </ul>
     </div>

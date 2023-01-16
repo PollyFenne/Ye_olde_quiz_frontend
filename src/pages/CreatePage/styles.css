@@ -10,6 +10,7 @@
 .create-page {
   background-color: var(--vintagewhite);
   border-radius: 20px;
+  height: 70%;
 }
 
 form {
@@ -25,11 +26,13 @@ form {
   border-top-right-radius: 0;
 }
 
+/* DIFFICULTY */
+
 .difficulty-buttons-container {
   margin-top: 15px;
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .difficulty-button {
@@ -47,15 +50,50 @@ form {
   color: var(--vintageblue);
 }
 
+.easy-button:hover {
+  background-color: var(--vintageblue);
+  color: var(--vintagewhite);
+}
+
+.easy-button-clicked {
+  background-color: var(--vintageblue);
+  color: var(--vintagewhite);
+  border: 2px solid var(--vintageblue);
+}
+
 .medium-button {
   border: 2px solid var(--vintageyellow);
   color: var(--vintageyellow);
+}
+
+.medium-button:hover {
+  background-color: var(--vintageyellow);
+  color: var(--vintagewhite);
+}
+
+.medium-button-clicked {
+  border: 2px solid var(--vintageyellow);
+  background-color: var(--vintageyellow);
+  color: var(--vintagewhite);
 }
 
 .hard-button {
   border: 2px solid var(--vintagered);
   color: var(--vintagered);
 }
+
+.hard-button:hover {
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
+}
+
+.hard-button-clicked {
+  border: 2px solid var(--vintagered);
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
+}
+
+/* ROUND */
 
 .select-round-container {
   width: 80%;
@@ -68,10 +106,11 @@ form {
   margin-top: 15px;
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .round-button {
+  border: 2px solid var(--vintagered);
   background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
@@ -81,6 +120,55 @@ form {
   font-size: 1.4rem;
 }
 
+.round-button-easy {
+  border: 2px solid var(--vintageblue);
+}
+
+.round-button-easy-active {
+  border: 2px solid var(--vintageblue);
+  background-color: var(--vintageblue);
+  color: var(--vintagewhite);
+}
+
+.round-button-medium {
+  border: 2px solid var(--vintageyellow);
+}
+
+.round-button-medium-active {
+  border: 2px solid var(--vintageyellow);
+  background-color: var(--vintageyellow);
+  color: var(--vintagewhite);
+}
+
+.round-button-hard {
+  border: 2px solid var(--vintagered);
+}
+
+.round-button-hard-active {
+  border: 2px solid var(--vintagered);
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
+}
+
 .select-button:hover {
   background-color: var(--vintagered);
+}
+
+/* SUBMIT */
+
+.submit-button {
+  background-color: var(--vintagewhite);
+  color: var(--vintagered);
+  font-family: "Lato", sans-serif;
+  margin-top: 50px;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 2px solid var(--vintagered);
+}
+
+.submit-button:hover {
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
 }

@@ -1,23 +1,32 @@
-/* Topics styling
-
-
-/* ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: auto auto auto;
+.topics-container {
+  width: 80%;
 }
 
-li {
-    font-size: 1.5rem;
-    background-color: var(--vintageyellow);
-    padding: 30px;
-    border-radius: 20px;
-    display: grid;
-    text-align: center;
-    margin: 15px;
+.topics {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 5px;
+  margin-top: 20px;
 }
 
-li input {
-    visibility: hidden;
+.topic-list-item {
+  list-style: none;
+  width: 80%;
 }
- */
+
+.topic-list-item input {
+  font-family: "Lato", sans-serif;
+  border: 2px solid var(--vintagered);
+  color: var(--vintagered);
+}
+
+.topic-button {
+  width: 100%;
+  height: 40px;
+  padding: 0 15px;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
