@@ -1,42 +1,49 @@
+/* HomePage styling  */
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-  --vintagered: #e64f30;
-  --vintageblue: #23c3b5;
-  --vintageyellow: #ffbe2d;
+  --vintagered: #C84639;
+  --vintageblue: #6DB4B0;
+  --vintageyellow: #E2AE47;
   --vintagewhite: #fff3e3;
-  --vintagebrown: #e6bc9e;
+  --vintagebrown: #E9D6AF;
+}
+
+html {
+  background-image: url('../../assets/images/background.webp');
 }
 
 * {
   padding: 0;
   margin: 0;
-  /* overflow: hidden; */
   box-sizing: border-box;
 }
 
 #root {
-  background-color: var(--vintagewhite);
   font-family: "Lato", sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 150px;
 }
+
 
 /* BANNER STYLING */
 
 .banner {
+  background-color: var(--vintagewhite);
   flex: 0, 1, auto;
-  background-color: var(--vintagebrown);
   display: flex;
   padding: 30px;
-  /* border-radius: 20px; */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .logo img {
-  height: 3rem;
-  width: 5rem;
+  margin-right: 20px;
 }
+
 
 /* HOMEPAGE STYLING */
 
@@ -47,8 +54,8 @@
   justify-content: space-around;
   align-items: center;
   background-color: var(--vintagewhite);
-  border-radius: 20px;
-  margin-top: 5%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .buttons-container {

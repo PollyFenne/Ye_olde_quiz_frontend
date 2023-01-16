@@ -1,0 +1,7 @@
+/* LoginRegister styling  */
+
+.login-content {
+    background-color: var(--vintagewhite);
+    border-radius: 20px;
+    padding: 30px;
+}
