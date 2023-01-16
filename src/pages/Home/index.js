@@ -14,8 +14,10 @@ const Home = () => {
       <Banner />
       <div className="home-content">
         <h1>Homepage</h1>
-        <ButtonControl buttonText={"NEW QUIZ"} />
-        <ButtonControl buttonText={"JOIN QUIZ"} />
+        <div className="buttons-container">
+          <ButtonControl buttonText={"NEW QUIZ"} />
+          <ButtonControl buttonText={"JOIN QUIZ"} />
+        </div>
       </div>
     </>
   );

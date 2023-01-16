@@ -1,9 +1,7 @@
 .create-game-button {
   font-size: 1.5rem;
-  margin-top: 50px;
-  margin-left: 50px;
   width: 30%;
-  height: 100px;
+  height: 200px;
   border: 2px solid var(--vintagered);
   border-radius: 15px;
   background-color: transparent;

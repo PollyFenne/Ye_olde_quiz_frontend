@@ -40,3 +40,8 @@ body {
   border-radius: 20px;
   margin-top: 10%;
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
