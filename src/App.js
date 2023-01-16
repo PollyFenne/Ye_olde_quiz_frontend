@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { Home } from "./pages";
 import Login from "./components/Login.js";
+import Register from "./components/Register";
 import useToken from "./components/useToken";
 
 
