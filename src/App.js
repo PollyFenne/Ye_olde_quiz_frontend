@@ -19,26 +19,8 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <>
-              <Banner isHome={true} />
-              <Home />
-            </>
-          }
-        />
-        <Route
-          exact
-          path="/create"
-          element={
-            <>
-              <Banner isCreate={true} />
-              <CreatePage />
-            </>
-          }
-        />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/create" element={<CreatePage />} />
         <Route exact path="/login" element={<LoginRegister />} />
       </Routes>
     </>

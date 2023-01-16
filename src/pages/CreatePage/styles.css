@@ -5,16 +5,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .create-page {
   background-color: var(--vintagewhite);
   border-radius: 20px;
   height: 70%;
+  flex-grow: 1;
+  margin-top: -25px;
 }
 
 form {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -166,6 +168,7 @@ form {
   font-weight: bold;
   border-radius: 20px;
   border: 2px solid var(--vintagered);
+  cursor: pointer;
 }
 
 .submit-button:hover {

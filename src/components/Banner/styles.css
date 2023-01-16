@@ -4,7 +4,7 @@
   background-color: var(--vintagewhite);
   flex: 0, 1, auto;
   display: flex;
-  padding: 30px;
+  padding: 25px 30px 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
