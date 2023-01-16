@@ -1,5 +1,5 @@
-
 import React, { useEffect, useState } from "react";
+import "./styles.css";
 
 const Topics = ({ updateTopic, topic }) => {
   useEffect(() => {
@@ -15,13 +15,9 @@ const Topics = ({ updateTopic, topic }) => {
     updateTopic(e.target.value);
   };
 
-import "./styles.css";
-
-
   return (
     <div className="topics">
       <ul>
-
         <li>
           <label htmlFor="general-knowledge"></label>
           <input
@@ -43,7 +39,6 @@ import "./styles.css";
             name="sports"
             onClick={handleRadioClick}
           />
-
         </li>
         <li>
           <label htmlFor="geography"></label>
@@ -145,8 +140,13 @@ import "./styles.css";
           />
         </li>
         <li>
-          <label htmlFor="celebrities" >Celebrities</label>
-          <input type="radio" value="Celebrities" id="celebrities"name="topics"/>
+          <label htmlFor="celebrities"></label>
+          <input
+            type="button"
+            value="Celebrities"
+            id="celebrities"
+            name="topics"
+          />
         </li>
       </ul>
     </div>
