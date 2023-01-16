@@ -15,8 +15,8 @@ const Home = () => {
       <div className="home-content">
         <h1>Homepage</h1>
         <div className="buttons-container">
-          <ButtonControl buttonText={"NEW QUIZ"} />
-          <ButtonControl buttonText={"JOIN QUIZ"} />
+          <ButtonControl buttonText={"Create a quiz!"} />
+          <ButtonControl buttonText={"Join a quiz!"} />
         </div>
       </div>
     </>
