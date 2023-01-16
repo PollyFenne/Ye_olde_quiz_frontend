@@ -4,7 +4,11 @@ import "./styles.css";
 
 const ButtonControl = ({ buttonHandler, buttonText }) => {
   return (
-    <button onClick={buttonHandler} className="create-game-button">
+    <button
+      type="button"
+      onClick={buttonHandler}
+      className="create-game-button"
+    >
       {buttonText}
     </button>
   );

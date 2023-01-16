@@ -20,6 +20,7 @@ const Home = () => {
 
   return (
     <>
+      <Banner isHome={true} />
       <div className="home-content">
         <div className="buttons-container">
           <ButtonControl

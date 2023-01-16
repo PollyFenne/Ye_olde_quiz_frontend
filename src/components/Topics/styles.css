@@ -6,8 +6,8 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 15px;
   margin-top: 20px;
 }
 
@@ -16,17 +16,34 @@
   width: 80%;
 }
 
-.topic-list-item input {
-  font-family: "Lato", sans-serif;
-  border: 2px solid var(--vintagered);
-  color: var(--vintagered);
-}
-
 .topic-button {
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
   width: 100%;
   height: 40px;
   padding: 0 15px;
   background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.1s;
+}
+
+.topic-button:hover {
+  scale: 1.03;
+}
+
+.topic-button-easy {
+  border: 2px solid var(--vintageblue);
+  color: var(--vintageblue);
+}
+
+.topic-button-medium {
+  border: 2px solid var(--vintageyellow);
+  color: var(--vintageyellow);
+}
+
+.topic-button-hard {
+  border: 2px solid var(--vintagered);
+  color: var(--vintagered);
 }
