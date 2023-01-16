@@ -38,6 +38,9 @@ const Login = ({ handleRedirect }) => {
     if (status == 200) {
       navigate("/", { replace: true });
     }
+    else{
+      document.getElementsByClassName("credentialsWarning")[0].style.display = "inherit"
+    }
   };
 
   return (
@@ -78,6 +81,11 @@ const Login = ({ handleRedirect }) => {
         <h2>
           Don't have an account? Register{" "}
           <span onClick={handleRedirect}>here</span>
+        </h2>
+      </div>
+      <div className="credentialsWarning">
+        <h2>
+          Invalid Credentials
         </h2>
       </div>
     </>

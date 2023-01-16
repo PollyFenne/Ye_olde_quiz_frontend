@@ -24,3 +24,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+/* Login/Register Buttons Styling */
+.loginButtons{
+  margin-left: auto;
+  padding: 10px;
+}

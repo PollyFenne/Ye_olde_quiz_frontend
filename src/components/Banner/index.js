@@ -1,10 +1,20 @@
 // Header/banner component
 
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const Banner = ({ isHome, isCreate }) => {
+  const navigate = useNavigate();
+
+  const handleLogin = () =>{
+      navigate("/login")
+  }
+
+  const handleRegister = () =>{
+    navigate("/login")
+}
+
   return (
     <div className="banner">
       <div className="logo">
@@ -27,6 +37,10 @@ const Banner = ({ isHome, isCreate }) => {
         ) : (
           <p></p>
         )}
+      </div>
+      <div className="loginButtons">
+          <button type="button" onClick={handleLogin}>Login</button>
+          <button type="button" onClick={handleRegister}>Register</button>
       </div>
     </div>
   );

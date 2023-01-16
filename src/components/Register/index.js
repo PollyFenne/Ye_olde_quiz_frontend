@@ -33,9 +33,12 @@ const Register = ({ handleRedirect }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const status = await registerUser(username, password);
+    // console.log(status)
     if (status == 201) {
+      handleRedirect();
       navigate("/login", { replace: true });
     } else {
+      document.getElementsByClassName("credentialsWarning")[0].style.display = "inherit"
     }
   };
 
@@ -77,6 +80,11 @@ const Register = ({ handleRedirect }) => {
         <h2>
           Already have an account? Login{" "}
           <span onClick={handleRedirect}>here</span>
+        </h2>
+      </div>
+      <div className="credentialsWarning">
+        <h2>
+          Invalid Credentials
         </h2>
       </div>
     </>

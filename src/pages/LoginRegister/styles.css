@@ -5,3 +5,10 @@
     border-radius: 20px;
     padding: 30px;
 }
+
+.credentialsWarning {
+    text-align: center;
+    color: red;
+    display: none;
+    margin: 10px;
+}
