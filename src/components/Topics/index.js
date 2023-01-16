@@ -1,52 +1,142 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Topics = () => {
+const Topics = ({ updateTopic, topic }) => {
+  useEffect(() => {
+    const topicButtons = document.querySelectorAll(".topic-button");
+    topicButtons.forEach((button) => {
+      if (topic == button.value) {
+        button.style.backgroundColor = "red";
+      }
+    });
+  });
+
+  const handleRadioClick = (e) => {
+    updateTopic(e.target.value);
+  };
+
   return (
     <div>
       <ul>
         <li>
-          <label htmlFor="knowledge" >General Knowledge</label>
-          <input type="radio" value="General-Knowledge" id="knowledge" name="topics"/>
+          <label htmlFor="general-knowledge"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="General Knowledge"
+            id="general-knowledge"
+            name="general-knowledge"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="sports" >Sports</label>
-          <input type="radio" value="Sports" id="sports" name="topics"/>
+          <label htmlFor="sports"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Sports"
+            id="sports"
+            name="sports"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="geography" >Geography</label>
-          <input type="radio" value="Geography" id="geography" name="topics"/>
+          <label htmlFor="geography"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Geography"
+            id="geography"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="history" >History</label>
-          <input type="radio" value="History" id="history"name="topics"/>
+          <label htmlFor="history"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="History"
+            id="history"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="politics" >Politics</label>
-          <input type="radio" value="Politics" id="politics"name="topics"/>
+          <label htmlFor="politics"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Politics"
+            id="politics"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="art" >Art</label>
-          <input type="radio" value="Art" id="art"name="topics"/>
+          <label htmlFor="art"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Art"
+            id="art"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="film" >Film</label>
-          <input type="radio" value="Film" id="film"name="topics"/>
+          <label htmlFor="film"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Film"
+            id="film"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="television" >Television</label>
-          <input type="radio" value="Television" id="television"name="topics"/>
+          <label htmlFor="television"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Television"
+            id="television"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="literature" >Literature</label>
-          <input type="radio" value="Literature" id="literature"name="topics"/>
+          <label htmlFor="literature"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Literature"
+            id="literature"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="music" >Music</label>
-          <input type="radio" value="Music" id="music"name="topics"/>
+          <label htmlFor="music"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Music"
+            id="music"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
         <li>
-          <label htmlFor="science-nature" >Science and Nature</label>
-          <input type="radio" value="Science-Nature" id="science-nature"name="topics"/>
+          <label htmlFor="science-nature"></label>
+          <input
+            className="topic-button"
+            type="button"
+            value="Science-Nature"
+            id="science-nature"
+            name="topics"
+            onClick={handleRadioClick}
+          />
         </li>
       </ul>
     </div>
