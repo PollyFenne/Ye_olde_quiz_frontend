@@ -1,5 +1,10 @@
 /* CreatePage styling  */
 
+.create-page {
+  background-color: var(--vintagewhite);
+  border-radius: 20px;
+}
+
 form {
   flex-grow: 1;
   display: flex;
@@ -10,6 +15,24 @@ form {
   padding: 30px;
 }
 
+.select-button {
+  background-color: var(--vintageyellow);
+  padding: 30px;
+  font-family: "Lato", sans-serif;
+  border: none;
+  margin: 15px;
+  border-radius: 20px;
+  font-size: 1.5rem;
+}
+
 .difficulty-button:focus {
   background-color: var(--vintagered);
 }
+
+.select-button:hover {
+  background-color: var(--vintagered);
+}
+
+
+
+
