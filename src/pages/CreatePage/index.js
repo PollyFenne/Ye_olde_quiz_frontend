@@ -1,27 +1,25 @@
 // CreatePage webpage
 
 import React, { useState, useEffect, useContext } from "react";
-
+import { useNavigate } from "react-router-dom";
 import Topics from "../../components/Topics";
 import Banner from "../../components/Banner";
 
 import { SocketContext } from "../../socket";
-import { createGame } from "../../utils/fetchAPI";
 
 import "./styles.css";
 
+const url = "http://localhost:3000";
+
 const CreatePage = () => {
   const io = useContext(SocketContext);
+  const navigate = useNavigate();
 
   const [gameInfo, setGameInfo] = useState(null);
-  // Testing socket connection
-  // useEffect(() => {
-  //   console.log(io);
-  //   io.emit("hello");
-  // }, [io]);
+  const [createGameInfo, setCreateInfo] = useState(null);
 
   const [color, setColor] = useState("#6db4b0");
-  const [level, setLevel] = useState("");
+  const [level, setLevel] = useState("1");
 
   const [showRoundOne, setShowRoundOne] = useState(true);
   const [showRoundTwo, setShowRoundTwo] = useState(false);
@@ -39,7 +37,7 @@ const CreatePage = () => {
   const [roundTwoActive, setRoundTwoActive] = useState(false);
   const [roundThreeActive, setRoundThreeActive] = useState(false);
 
-  console.log([roundOneTopic, roundTwoTopic, roundThreeTopic]);
+  // console.log([roundOneTopic, roundTwoTopic, roundThreeTopic]);
 
   const handleRoundOne = () => {
     if (!showRoundOne) {
@@ -143,18 +141,67 @@ const CreatePage = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(createGameInfo);
+    if (createGameInfo) {
+      io.emit("create-game", createGameInfo);
+      navigate("/waiting-lobby", {
+        state: { join_code: createGameInfo.join_code },
+      });
+    }
+  }, [createGameInfo]);
+
+  useEffect(() => {
+    const createGame = async (gameData) => {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("session"),
+        },
+        body: JSON.stringify(gameData),
+      };
+      try {
+        const response = await fetch(`${url}/games`, options);
+        const data = await response.json();
+        if (response.status == 201) {
+          setCreateInfo(data);
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    };
+
+    if (
+      gameInfo &&
+      gameInfo.topics[0] &&
+      gameInfo.topics[1] &&
+      gameInfo.topics[2]
+    ) {
+      createGame(gameInfo);
+      //.then(response => {
+      //    if (response.status == 200) {
+      //      navigate("/waiting-lobby");
+      //   }})
+      //.catch(error => {console.log(error)})
+    } else {
+      console.log("Please select 3 topics");
+    }
+  }, [gameInfo]);
+
   const createQuiz = (e) => {
     e.preventDefault();
     setGameInfo({
       level: level,
       topics: [roundOneTopic, roundTwoTopic, roundThreeTopic],
     });
-    createGame(gameInfo);
   };
+
+  // console.log(gameInfo);
 
   return (
     <div className="mainCreate">
-      <Banner isCreate={true} />
+      <Banner displayBack={true} />
       <div className="create-page">
         <form onSubmit={createQuiz} className="create-game-form">
           <div className="select-difficulty-container">

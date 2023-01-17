@@ -5,17 +5,13 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Banner from "./components/Banner";
-import { Home, CreatePage, JoinPage, NotFound } from "./pages";
+import { Home, CreatePage, JoinPage, NotFound, WaitingLobby } from "./pages";
 import LoginRegister from "./pages/LoginRegister";
 import useToken from "./components/useToken";
 import { SocketContext, socket } from "./socket";
 
 const App = () => {
   const { token, setToken } = useToken();
-
-  //   if (!token) {
-  //     return <Login setToken={setToken} />;
-  //   }
 
   useEffect(() => {
     socket.emit("connection");
@@ -29,6 +25,7 @@ const App = () => {
           <Route exact path="/create" element={<CreatePage />} />
           <Route exact path="/login" element={<LoginRegister />} />
           <Route exact path="/join" element={<JoinPage />} />
+          <Route exact path="/waiting-lobby" element={<WaitingLobby />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </SocketContext.Provider>

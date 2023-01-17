@@ -9,6 +9,11 @@ export const createGame = async (gameData) => {
     },
     body: JSON.stringify(gameData),
   };
-
-  const response = await fetch(`${url}/games`, options);
+  try {
+    const response = await fetch(`${url}/games`, options);
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
 };

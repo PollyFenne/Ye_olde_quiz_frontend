@@ -1,1 +1,22 @@
 /* PAGE NOT FOUND STYLING */
+
+.not-found {
+  background-color: var(--vintagewhite);
+  border-radius: 20px;
+  height: 80vh;
+  padding: 30px;
+  text-align: center;
+}
+
+.not-found img {
+  height: 500px;
+  width: 600px;
+}
+
+.not-found h2 {
+  padding: 30px;
+}
+
+.not-found h1 {
+  font-size: 400px;
+}
