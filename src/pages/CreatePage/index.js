@@ -6,18 +6,22 @@ import Topics from "../../components/Topics";
 import Banner from "../../components/Banner";
 
 import { SocketContext } from "../../socket";
+import { createGame } from "../../utils/fetchAPI";
 
 import "./styles.css";
 
 const CreatePage = () => {
   const io = useContext(SocketContext);
 
-  useEffect(() => {
-    console.log(io);
-    io.emit("hello");
-  }, [io]);
+  const [gameInfo, setGameInfo] = useState(null);
+  // Testing socket connection
+  // useEffect(() => {
+  //   console.log(io);
+  //   io.emit("hello");
+  // }, [io]);
 
   const [color, setColor] = useState("#6db4b0");
+  const [level, setLevel] = useState("");
 
   const [showRoundOne, setShowRoundOne] = useState(true);
   const [showRoundTwo, setShowRoundTwo] = useState(false);
@@ -91,6 +95,7 @@ const CreatePage = () => {
     setMediumActive(false);
     setHardActive(false);
 
+    setLevel(1);
     setColor("#6db4b0");
   };
 
@@ -99,6 +104,7 @@ const CreatePage = () => {
     setMediumActive(true);
     setHardActive(false);
 
+    setLevel(2);
     setColor("#e2ae47");
   };
 
@@ -107,6 +113,7 @@ const CreatePage = () => {
     setMediumActive(false);
     setHardActive(true);
 
+    setLevel(3);
     setColor("#c84639");
   };
 
@@ -138,6 +145,11 @@ const CreatePage = () => {
 
   const createQuiz = (e) => {
     e.preventDefault();
+    setGameInfo({
+      level: level,
+      topics: [roundOneTopic, roundTwoTopic, roundThreeTopic],
+    });
+    createGame(gameInfo);
   };
 
   return (
