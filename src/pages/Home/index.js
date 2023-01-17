@@ -20,6 +20,11 @@ const Home = () => {
     else navigate("/login");
   };
 
+  const joinGame = () => {
+    if (sessionToken) navigate("/join");
+    else navigate("/login");
+  };
+
   return (
     <div className="main">
       <Banner isHome={true} />
@@ -29,7 +34,7 @@ const Home = () => {
             buttonHandler={createQuiz}
             buttonText={"Create a quiz!"}
           />
-          <ButtonControl buttonText={"Join a quiz!"} />
+          <ButtonControl buttonHandler={joinGame} buttonText={"Join a quiz!"} />
         </div>
         <div className="cards">
           <HighScoreCard />
