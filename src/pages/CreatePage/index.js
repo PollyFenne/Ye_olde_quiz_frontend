@@ -7,16 +7,22 @@ import Banner from "../../components/Banner";
 
 import "./styles.css";
 
+
+
 const CreatePage = () => {
   const [color, setColor] = useState("#6db4b0");
 
-  const [showRoundOne, setShowRoundOne] = useState(true);
-  const [showRoundTwo, setShowRoundTwo] = useState(false);
-  const [showRoundThree, setShowRoundThree] = useState(false);
+  // const [showRoundOne, setShowRoundOne] = useState(true);
+  // const [showRoundTwo, setShowRoundTwo] = useState(false);
+  // const [showRoundThree, setShowRoundThree] = useState(false);
 
-  const [roundOneTopic, setRoundOneTopic] = useState("");
-  const [roundTwoTopic, setRoundTwoTopic] = useState("");
-  const [roundThreeTopic, setRoundThreeTopic] = useState("");
+  const [roundShown, setRoundShown] = useState([true, false, false])
+
+  // const [roundOneTopic, setRoundOneTopic] = useState("");
+  // const [roundTwoTopic, setRoundTwoTopic] = useState("");
+  // const [roundThreeTopic, setRoundThreeTopic] = useState("");
+
+  const [topics, setTopics] = useState(["", "", ""])
 
   const [easyActive, setEasyActive] = useState(false);
   const [mediumActive, setMediumActive] = useState(false);
@@ -26,55 +32,90 @@ const CreatePage = () => {
   const [roundTwoActive, setRoundTwoActive] = useState(false);
   const [roundThreeActive, setRoundThreeActive] = useState(false);
 
-  console.log([roundOneTopic, roundTwoTopic, roundThreeTopic]);
+  // console.log([roundOneTopic, roundTwoTopic, roundThreeTopic]);
+  console.log(topics)
 
-  const handleRoundOne = () => {
-    if (!showRoundOne) {
-      setShowRoundOne(true);
-      setShowRoundTwo(false);
-      setShowRoundThree(false);
+  const makeRoundHandler = (index) => {
+    return () => {
+      if (!roundShown[index]) {
 
-      setRoundOneActive(true);
-      setRoundTwoActive(false);
-      setRoundThreeActive(false);
+        const newRoundShown = [...roundShown];
+        newRoundShown[index] = true;
+        for (let i = 0; i < roundShown.length; i++) {
+          if (i == index) {
+            continue
+          }
+          newRoundShown[i] = false;
+        }
+  
+        setRoundShown(newRoundShown);
+      }
     }
-  };
+  }
 
-  const handleRoundTwo = () => {
-    if (!showRoundTwo) {
-      setShowRoundOne(false);
-      setShowRoundTwo(true);
-      setShowRoundThree(false);
+  const handleRoundOne = makeRoundHandler(0);
+  // const handleRoundOne = () => {
+  //   if (!showRoundOne) {
+  //     setShowRoundOne(true);
+  //     setShowRoundTwo(false);
+  //     setShowRoundThree(false);
 
-      setRoundOneActive(false);
-      setRoundTwoActive(true);
-      setRoundThreeActive(false);
+  //     setRoundOneActive(true);
+  //     setRoundTwoActive(false);
+  //     setRoundThreeActive(false);
+  //   }
+  // };
+
+
+  const handleRoundTwo = makeRoundHandler(1);
+  // const handleRoundTwo = () => {
+  //   if (!showRoundTwo) {
+  //     setShowRoundOne(false);
+  //     setShowRoundTwo(true);
+  //     setShowRoundThree(false);
+
+  //     setRoundOneActive(false);
+  //     setRoundTwoActive(true);
+  //     setRoundThreeActive(false);
+  //   }
+  // };
+
+  const handleRoundThree = makeRoundHandler(2);
+  // const handleRoundThree = () => {
+  //   if (!showRoundThree) {
+  //     setShowRoundOne(false);
+  //     setShowRoundTwo(false);
+  //     setShowRoundThree(true);
+
+  //     setRoundOneActive(false);
+  //     setRoundTwoActive(false);
+  //     setRoundThreeActive(true);
+  //   }
+  // };
+
+  // this could easily just be a function that takes two args: const updateTopicForRound = (round, topic) => { ... }
+  const makeTopicHandler = (index) => {
+    return (topic) => {
+      const newTopics = [...topics];
+      newTopics[index] = topic;
+      setTopics(newTopics);
     }
-  };
+  }
 
-  const handleRoundThree = () => {
-    if (!showRoundThree) {
-      setShowRoundOne(false);
-      setShowRoundTwo(false);
-      setShowRoundThree(true);
+  const updateRoundOneTopic = makeTopicHandler(0);
+  // const updateRoundOneTopic = (topic) => {
+  //   setRoundOneTopic(topic);
+  // };
 
-      setRoundOneActive(false);
-      setRoundTwoActive(false);
-      setRoundThreeActive(true);
-    }
-  };
+  const updateRoundTwoTopic = makeTopicHandler(1);
+  // const updateRoundTwoTopic = (topic) => {
+  //   setRoundTwoTopic(topic);
+  // };
 
-  const updateRoundOneTopic = (topic) => {
-    setRoundOneTopic(topic);
-  };
-
-  const updateRoundTwoTopic = (topic) => {
-    setRoundTwoTopic(topic);
-  };
-
-  const updateRoundThreeTopic = (topic) => {
-    setRoundThreeTopic(topic);
-  };
+  const updateRoundThreeTopic = makeTopicHandler(2);
+  // const updateRoundThreeTopic = (topic) => {
+  //   setRoundThreeTopic(topic);
+  // };
 
   // HandleClicks
   const handleClickEasy = () => {
@@ -190,29 +231,29 @@ const CreatePage = () => {
               />
             </div>
           </div>
-          {showRoundOne ? (
+          {roundShown[0] ? (
             <Topics
               color={color}
               updateTopic={updateRoundOneTopic}
-              topic={roundOneTopic}
+              topic={topics[0]}
             />
           ) : (
             <></>
           )}
-          {showRoundTwo ? (
+          {roundShown[1] ? (
             <Topics
               color={color}
               updateTopic={updateRoundTwoTopic}
-              topic={roundTwoTopic}
+              topic={topics[1]}
             />
           ) : (
             <></>
           )}
-          {showRoundThree ? (
+          {roundShown[2] ? (
             <Topics
               color={color}
               updateTopic={updateRoundThreeTopic}
-              topic={roundThreeTopic}
+              topic={topics[2]}
             />
           ) : (
             <></>
