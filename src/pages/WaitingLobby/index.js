@@ -1,3 +1,5 @@
+// Waiting lobby page
+
 import React, { useState, useEffect, useContext } from "react";
 import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
@@ -14,18 +16,11 @@ const WaitingLobby = () => {
   const joinCode = location.state.join_code;
 
   useEffect(() => {
-    socket.on("update users", (updatedUsers) => {
-      setUsers([...updatedUsers]);
+    socket.emit("join-game", joinCode);
+    socket.on("updateUsers", (data) => {
+      console.log(data);
+      setUsers(data);
     });
-
-    socket.on("admin", (adminId) => {
-      setAdmin(adminId);
-    });
-
-    return () => {
-      socket.off("update users");
-      socket.off("admin");
-    };
   }, []);
 
   const handleStartGame = () => {
@@ -36,7 +31,7 @@ const WaitingLobby = () => {
 
   const renderUsers = () => {
     users.map((user) => {
-      return <p>{user}</p>;
+      return <p>{user} has joined the lobby</p>;
     });
   };
 

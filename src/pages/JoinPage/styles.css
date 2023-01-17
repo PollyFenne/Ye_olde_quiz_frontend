@@ -1,7 +1,64 @@
-.main {
+/* JOIN PAGE STYLING */
+
+.joinMain {
   margin: 0px;
   width: 100%;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 20px;
   background-color: var(--vintagewhite);
+}
+
+/* Enter code */
+
+.joinMain .join-code {
+  text-align: center;
+}
+
+/* Join code input */
+
+.joinMain .join-code input {
+  font-family: "Lato", sans-serif;
+  background: none;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: 1px solid var(--vintagered);
+  color: var(--vintagered);
+  padding: 5px;
+  outline: inherit;
+  border-radius: 3px;
+  margin: 3px;
+  font-size: 70px;
+}
+
+.joinMain .join-code input :hover {
+  background: var(--vintagered);
+  color: white;
+}
+
+/* Label  */
+
+.join-text {
+  display: block;
+  color: var(--vintagewhite);
+}
+
+/* Submit button */
+
+.joinMain button {
+  background-color: var(--vintagewhite);
+  color: var(--vintagered);
+  font-family: "Lato", sans-serif;
+  margin-top: 50px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 2px solid var(--vintagered);
+  cursor: pointer;
+}
+
+.joinMain button:hover {
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
 }
