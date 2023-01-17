@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Banner from "./components/Banner";
-import { Home, CreatePage, JoinPage } from "./pages";
+import { Home, CreatePage, JoinPage, NotFound } from "./pages";
 import LoginRegister from "./pages/LoginRegister";
 import useToken from "./components/useToken";
 import { SocketContext, socket } from "./socket";
@@ -29,6 +29,7 @@ const App = () => {
           <Route exact path="/create" element={<CreatePage />} />
           <Route exact path="/login" element={<LoginRegister />} />
           <Route exact path="/join" element={<JoinPage />} />
+          <Route exact path="*" element={<NotFound />} />
         </Routes>
       </SocketContext.Provider>
     </>
