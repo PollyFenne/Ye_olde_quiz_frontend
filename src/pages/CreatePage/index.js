@@ -1,13 +1,22 @@
 // CreatePage webpage
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Topics from "../../components/Topics";
 import Banner from "../../components/Banner";
 
+import { SocketContext } from "../../socket";
+
 import "./styles.css";
 
 const CreatePage = () => {
+  const io = useContext(SocketContext);
+
+  useEffect(() => {
+    console.log(io);
+    io.emit("hello");
+  }, [io]);
+
   const [color, setColor] = useState("#6db4b0");
 
   const [showRoundOne, setShowRoundOne] = useState(true);
@@ -127,11 +136,15 @@ const CreatePage = () => {
     }
   };
 
+  const createQuiz = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="mainCreate">
       <Banner isCreate={true} />
       <div className="create-page">
-        <form className="create-game-form">
+        <form onSubmit={createQuiz} className="create-game-form">
           <div className="select-difficulty-container">
             <h1 className="title-heading">Select difficulty level</h1>
             <div className="difficulty-buttons-container">

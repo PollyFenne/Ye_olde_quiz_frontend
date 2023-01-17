@@ -1,16 +1,14 @@
 // App.js
 
-import React from "react";
+import React, { createContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Banner from "./components/Banner";
-import { Home, CreatePage } from "./pages";
+import { Home, CreatePage, JoinPage } from "./pages";
 import LoginRegister from "./pages/LoginRegister";
 import useToken from "./components/useToken";
-import io from "socket.io-client";
-
-const socket = io();
+import { SocketContext, socket } from "./socket";
 
 const App = () => {
   const { token, setToken } = useToken();
@@ -19,13 +17,20 @@ const App = () => {
   //     return <Login setToken={setToken} />;
   //   }
 
+  useEffect(() => {
+    socket.emit("connection");
+  }, []);
+
   return (
     <>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/create" element={<CreatePage />} />
-        <Route exact path="/login" element={<LoginRegister />} />
-      </Routes>
+      <SocketContext.Provider value={socket}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/create" element={<CreatePage />} />
+          <Route exact path="/login" element={<LoginRegister />} />
+          <Route exact path="/join" element={<JoinPage />} />
+        </Routes>
+      </SocketContext.Provider>
     </>
   );
 };
