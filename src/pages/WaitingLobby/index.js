@@ -6,22 +6,22 @@ import { SocketContext } from "../../socket";
 import { useLocation } from "react-router-dom";
 import "./styles.css";
 
+const url = "http://localhost:3000";
+
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
   const [users, setUsers] = useState([]);
   //get admin_id from data
   const [admin, setAdmin] = useState("");
   const location = useLocation();
+  const joinCode = location.state.createGameInfo.join_code;
+  const username = location.state.username;
 
-  const joinCode = location.state.join_code;
 
-  useEffect(() => {
-    socket.emit("join-game", joinCode);
-    socket.on("updateUsers", (data) => {
-      console.log(data);
-      setUsers(data);
-    });
-  }, []);
+  // Listing users in the lobby
+  socket.on("add-player", () => {
+
+  })
 
   const handleStartGame = () => {
     if (admin === socket.id) {
