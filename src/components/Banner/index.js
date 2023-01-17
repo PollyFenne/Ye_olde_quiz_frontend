@@ -6,7 +6,7 @@ import "./styles.css";
 
 const url = "http://localhost:3000";
 
-const Banner = ({ isHome, isCreate }) => {
+const Banner = ({ isHome, displayBack }) => {
   const navigate = useNavigate();
   const sessionToken = localStorage.getItem("session");
   const [username, setUsername] = useState(null);
@@ -75,7 +75,7 @@ const Banner = ({ isHome, isCreate }) => {
         ) : (
           <p></p>
         )}
-        {isCreate ? (
+        {displayBack ? (
           <NavLink className="back-button" to="/">
             <h3>Back to Homepage</h3>
           </NavLink>

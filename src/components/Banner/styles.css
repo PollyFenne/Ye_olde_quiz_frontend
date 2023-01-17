@@ -4,6 +4,8 @@
   flex: 0, 1, auto;
   display: flex;
   /* padding: 25px 30px 0; */
+  background-color: var(--vintagewhite);
+  padding: 15px;
 }
 
 .logo img {

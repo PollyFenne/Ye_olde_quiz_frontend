@@ -1,0 +1,42 @@
+/* waitingLobby styling  */
+
+.lobbyMain {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background-color: var(--vintagewhite);
+}
+
+.joincode h1,
+.join-code p {
+  text-align: center;
+}
+
+.joincode {
+  border-bottom: 1px solid var(--vintagered);
+  padding: 2rem 0rem;
+}
+
+.lobby {
+  padding: 2rem 0rem;
+}
+
+/* SUBMIT */
+
+.submit-button {
+  background-color: var(--vintagewhite);
+  color: var(--vintagered);
+  font-family: "Lato", sans-serif;
+  margin-top: 50px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 2px solid var(--vintagered);
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
+}
