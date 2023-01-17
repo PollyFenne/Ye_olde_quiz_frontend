@@ -3,12 +3,14 @@ import "./styles.css";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { SocketContext } from "../../socket";
+import { useNavigate } from "react-router-dom";
 
 import Banner from "../../components/Banner";
 
 function JoinPage() {
   const [joinCode, setJoinCode] = useState("");
   const socket = useContext(SocketContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,16 +21,21 @@ function JoinPage() {
   };
 
   return (
-    <div className="main">
+    <div className="joinMain">
       <Banner />
       <form onSubmit={handleSubmit}>
-        <label></label>
-        <input
-          type="text"
-          placeholder="Enter join code"
-          value={joinCode}
-          onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
-        />
+        <div className="join-code">
+          <label htmlFor="join" className="join-text">
+            Enter join code:
+          </label>
+          <input
+            type="text"
+            name="join"
+            placeholder="Enter join code"
+            value={joinCode}
+            onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
+          />
+        </div>
         <button type="submit">Join</button>
       </form>
     </div>
