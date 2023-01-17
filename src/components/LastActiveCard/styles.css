@@ -1,4 +1,7 @@
 .last-active-card {
-  width: 80%;
+  width: 100%;
   background-color: var(--vintageyellow);
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 3px;
 }

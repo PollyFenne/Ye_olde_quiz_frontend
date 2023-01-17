@@ -1,11 +1,11 @@
 /* CreatePage styling  */
 
-.select-difficulty-container {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+.mainCreate {
+  margin: 0px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background-color: var(--vintagewhite);
 }
 
 .create-page {
@@ -13,10 +13,9 @@
   border-radius: 20px;
   height: 70%;
   flex-grow: 1;
-  margin-top: -25px;
 }
 
-form {
+.create-game-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,9 +25,22 @@ form {
   background-color: var(--vintagewhite);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  margin-bottom: 20px;
+}
+
+.title-heading {
+  padding: 30px;
 }
 
 /* DIFFICULTY */
+
+.select-difficulty-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
 
 .difficulty-buttons-container {
   margin-top: 15px;
@@ -109,6 +121,7 @@ form {
   width: 100%;
   display: flex;
   gap: 15px;
+  padding-bottom: 20px;
 }
 
 .round-button {
@@ -164,7 +177,7 @@ form {
   font-family: "Lato", sans-serif;
   margin-top: 50px;
   padding: 15px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   border-radius: 20px;
   border: 2px solid var(--vintagered);

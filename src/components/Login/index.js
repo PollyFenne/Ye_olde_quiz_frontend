@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "./styles.css";
+
 const url = "http://localhost:3000";
 
 // Fetching user data from API
@@ -37,56 +39,52 @@ const Login = ({ handleRedirect }) => {
     const status = await loginUser(username, password);
     if (status == 200) {
       navigate("/", { replace: true });
-    }
-    else{
-      document.getElementsByClassName("credentialsWarning")[0].style.display = "inherit"
+    } else {
+      document.getElementsByClassName("credentialsWarning")[0].style.display =
+        "inherit";
     }
   };
 
   return (
     <>
+      <h1 className="login-header">Login</h1>
       <div className="login">
-        <h1>Please Login</h1>
-        <form onSubmit={handleSubmit}>
+        <form className="register-form" onSubmit={handleSubmit}>
           <div className="form-username">
-            <label htmlFor="login-username" className="label">
-              Username
-            </label>
+            <label htmlFor="login-username" className="label"></label>
             <input
               type="text"
               className="form-input"
               id="login-username"
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
             />
           </div>
           <div className="form-password">
-            <label htmlFor="login-password" className="label">
-              Password
-            </label>
+            <label htmlFor="login-password" className="label"></label>
             <input
               type="password"
               className="form-input"
               id="login-password"
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
             />
           </div>
-          <div className="submit-btn">
-            <button type="submit" className="btn">
-              Submit
-            </button>
-          </div>
+          <button type="submit" className="login-btn">
+            Login
+          </button>
         </form>
       </div>
       <div className="redirect">
-        <h2>
-          Don't have an account? Register{" "}
-          <span onClick={handleRedirect}>here</span>
-        </h2>
+        <p className="login-link-text">
+          Don't have an account?{" "}
+          <span className="login-link" onClick={handleRedirect}>
+            Register
+          </span>
+        </p>
       </div>
       <div className="credentialsWarning">
-        <h2>
-          Invalid Credentials
-        </h2>
+        <h2>Invalid Credentials</h2>
       </div>
     </>
   );

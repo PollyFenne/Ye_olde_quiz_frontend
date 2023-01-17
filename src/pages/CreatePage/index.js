@@ -128,12 +128,12 @@ const CreatePage = () => {
   };
 
   return (
-    <>
+    <div className="mainCreate">
       <Banner isCreate={true} />
       <div className="create-page">
-        <form>
+        <form className="create-game-form">
           <div className="select-difficulty-container">
-            <h2>Select difficulty</h2>
+            <h1 className="title-heading">Select difficulty level</h1>
             <div className="difficulty-buttons-container">
               <input
                 type="button"
@@ -168,7 +168,7 @@ const CreatePage = () => {
             </div>
           </div>
           <div className="select-round-container">
-            <h2>Select 3 topics</h2>
+            <h1 className="title-heading">Select 1 topic for each round</h1>
             <div className="round-buttons-container">
               <input
                 className={setRoundButtonClassNames(roundOneActive)}
@@ -220,7 +220,7 @@ const CreatePage = () => {
           <input type="submit" className="submit-button" value="Create quiz!" />
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

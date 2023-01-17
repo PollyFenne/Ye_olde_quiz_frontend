@@ -12,14 +12,16 @@ import LastActiveCard from "../../components/LastActiveCard";
 import "./Home.css";
 
 const Home = () => {
+  const sessionToken = localStorage.getItem("session");
   const navigate = useNavigate();
 
   const createQuiz = () => {
-    navigate("/create");
+    if (sessionToken) navigate("/create");
+    else navigate("/login");
   };
 
   return (
-    <>
+    <div className="main">
       <Banner isHome={true} />
       <div className="home-content">
         <div className="buttons-container">
@@ -29,10 +31,12 @@ const Home = () => {
           />
           <ButtonControl buttonText={"Join a quiz!"} />
         </div>
-        <HighScoreCard />
-        <LastActiveCard />
+        <div className="cards">
+          <HighScoreCard />
+          <LastActiveCard />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

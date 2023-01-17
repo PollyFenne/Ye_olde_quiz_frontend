@@ -8,6 +8,9 @@ import Banner from "./components/Banner";
 import { Home, CreatePage } from "./pages";
 import LoginRegister from "./pages/LoginRegister";
 import useToken from "./components/useToken";
+import io from "socket.io-client";
+
+const socket = io();
 
 const App = () => {
   const { token, setToken } = useToken();
