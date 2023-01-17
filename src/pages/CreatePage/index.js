@@ -171,6 +171,7 @@ const CreatePage = () => {
         console.warn(err);
       }
     };
+    console.log(gameInfo)
 
     if (
       gameInfo &&
@@ -184,9 +185,15 @@ const CreatePage = () => {
       //      navigate("/waiting-lobby");
       //   }})
       //.catch(error => {console.log(error)})
-    } else {
+    } 
+    else if (gameInfo == null) {
+
+    }
+    else  {
+      alert("Please select 3 topics")
       console.log("Please select 3 topics");
     }
+
   }, [gameInfo]);
 
   const createQuiz = (e) => {
