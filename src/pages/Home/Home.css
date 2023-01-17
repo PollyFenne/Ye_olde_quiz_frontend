@@ -12,6 +12,7 @@
 
 html {
   background-image: url("../../assets/images/background.webp");
+  background-repeat: no-repeat;
 }
 
 * {
@@ -22,12 +23,20 @@ html {
 
 #root {
   font-family: "Lato", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-
   justify-content: space-between;
-  padding: 100px 120px;
+  padding: 5%;
+}
+
+.main {
+  margin: 0px;
+  width: 100%;
+  max-height: 100%;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: var(--vintagewhite);
 }
 
 .home-content {
@@ -37,12 +46,16 @@ html {
   justify-content: space-around;
   align-items: center;
   background-color: var(--vintagewhite);
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 
 .buttons-container {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+  padding: 1rem 1rem 2rem 1rem;
+}
+
+.cards {
+  width: 90%;
+  margin-bottom: 3rem;
 }

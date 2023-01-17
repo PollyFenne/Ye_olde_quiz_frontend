@@ -1,6 +1,6 @@
 // Header/banner component
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./styles.css";
 
@@ -12,51 +12,50 @@ const Banner = ({ isHome, isCreate }) => {
   const [username, setUsername] = useState(null);
 
   const getUsername = async () => {
-      try{
-          const response = await fetch(`${url}/users/${sessionToken}`)
-          const data = await response.json()
-          setUsername(data.title)
-      } catch (err) {
-          console.log("no user logged in")
-      }
+    try {
+      const response = await fetch(`${url}/users/${sessionToken}`);
+      const data = await response.json();
+      setUsername(data.title);
+    } catch (err) {
+      console.log("no user logged in");
     }
+  };
 
   const logout = async () => {
-      try{
-        const options = {
-          method: "DELETE",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            sessionToken: sessionToken,
-          }),
-        }
-        const response = await fetch(`${url}/users/logout`, options)
-        localStorage.removeItem("session")
-      } catch(err){
-          console.log("Could not log out")
-      }
-  }
+    try {
+      const options = {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionToken: sessionToken,
+        }),
+      };
+      const response = await fetch(`${url}/users/logout`, options);
+      localStorage.removeItem("session");
+    } catch (err) {
+      console.log("Could not log out");
+    }
+  };
 
-  const handleLogin = () =>{
-      navigate("/login")
-  }
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
-  const handleRegister = () =>{
-    navigate("/login")
-  }
+  const handleRegister = () => {
+    navigate("/login");
+  };
 
   const handleLogout = () => {
-    logout()
-    navigate("/login")
-  }
+    logout();
+    navigate("/login");
+  };
 
   useEffect(() => {
-    getUsername()
-  })
-
+    getUsername();
+  });
 
   return (
     <div className="banner">
@@ -64,29 +63,42 @@ const Banner = ({ isHome, isCreate }) => {
         <img src="../../assets/images/Logo1.png" alt="Logo" height={"100px"} />
       </div>
       <div className="username">
-        {username ? <h1>Welcome back, {username}</h1>:<h1>Welcome to Ye Old Quiz</h1>}
+        {username ? (
+          <h1>Welcome back, {username}</h1>
+        ) : (
+          <h1>Welcome to Ye Old Quiz</h1>
+        )}
         {isHome ? (
           <div className="home-banner">
-            <h4>Create a new game or join an existing game!</h4>
+            <h3>Create a new game or join an existing game!</h3>
           </div>
         ) : (
           <p></p>
         )}
         {isCreate ? (
           <NavLink className="back-button" to="/">
-            Back to Homepage
+            <h3>Back to Homepage</h3>
           </NavLink>
         ) : (
           <p></p>
         )}
       </div>
       <div className="loginButtons">
-          {!sessionToken && 
+        {!sessionToken && (
           <>
-            <button type="button" onClick={handleLogin}>Login</button>
-            <button type="button" onClick={handleRegister}>Register</button>
-          </>}
-          {username && <button type="button" onClick={handleLogout}>Logout</button>}
+            <button type="button" onClick={handleLogin}>
+              Login
+            </button>
+            <button type="button" onClick={handleRegister}>
+              Register
+            </button>
+          </>
+        )}
+        {username && (
+          <button type="button" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );

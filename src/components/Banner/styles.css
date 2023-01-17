@@ -1,32 +1,51 @@
 /* BANNER STYLING */
 
 .banner {
-  background-color: var(--vintagewhite);
   flex: 0, 1, auto;
   display: flex;
-  padding: 25px 30px 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  /* padding: 25px 30px 0; */
 }
 
 .logo img {
   margin-right: 20px;
 }
 
+/* CREATEPAGE only */
+
 .back-button {
   text-decoration: none;
   color: black;
 }
 
+.username h1 {
+  margin-bottom: 15px;
+}
+
 /* HOMEPAGE ONLY */
 
 .home-banner {
-  display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 /* Login/Register Buttons Styling */
-.loginButtons{
+.loginButtons {
   margin-left: auto;
+  float: right;
+}
+
+.loginButtons button {
+  background: none;
+  border: 1px solid var(--vintagered);
+  color: var(--vintagered);
   padding: 10px;
+  outline: inherit;
+  border-radius: 3px;
+  margin: 3px;
+  font-size: 1.2rem;
+}
+
+.loginButtons button:hover {
+  background: var(--vintagered);
+  color: white;
 }

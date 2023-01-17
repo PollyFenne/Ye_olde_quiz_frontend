@@ -1,0 +1,57 @@
+.register,
+.login {
+  width: 100%;
+}
+
+.login-header {
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.form-username,
+.form-password {
+  width: 40%;
+}
+
+.form-input {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--vintagered);
+  background-color: transparent;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.login-link-text {
+  font-weight: 600;
+}
+
+.login-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.register-btn,
+.login-btn {
+  cursor: pointer;
+  margin: 20px auto;
+  font-size: 1.3rem;
+  font-family: "Lato", sans-serif;
+  width: 25%;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid var(--vintagered);
+  border-radius: 5px;
+}

@@ -1,6 +1,8 @@
 /* HighScoreCard styling */
 
 .high-score-card {
-  width: 80%;
+  width: 100%;
   background-color: var(--vintageyellow);
+  padding: 0.25rem;
+  border-radius: 3px;
 }
