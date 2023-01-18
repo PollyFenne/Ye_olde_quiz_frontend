@@ -7,6 +7,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
+const url = "http://localhost:3000";
+
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
   const [users, setUsers] = useState([]);
@@ -41,10 +43,12 @@ const WaitingLobby = () => {
     });
   }, [startGame]);
 
+
   const handleStartGame = async () => {
     await socket.emit("start-game", gameinfo);
     setStartGame(true);
     navigate("/game", { state: gameinfo });
+
   };
 
   return (

@@ -17,6 +17,7 @@ const CreatePage = () => {
 
   const [gameInfo, setGameInfo] = useState(null);
   const [createGameInfo, setCreateInfo] = useState(null);
+  const [username, setUsername] = useState(null)
 
   const [color, setColor] = useState("#6db4b0");
   const [level, setLevel] = useState("1");
@@ -142,16 +143,35 @@ const CreatePage = () => {
   };
 
   useEffect(() => {
-    console.log(createGameInfo);
-    if (createGameInfo) {
-      io.emit("create-game", createGameInfo);
+    if (username) {
+      io.emit("create-game", createGameInfo, username);
       navigate("/waiting-lobby", {
+
         state: createGameInfo,
+
       });
     }
+  }, [username]);
+
+  useEffect(() => {
+      const getUsername = async () => {
+        try {
+          const response = await fetch(`${url}/users/user/${createGameInfo.user_id}`);
+          const data = await response.json();
+          setUsername(data.title)
+        } catch (err) {
+          console.log("no user logged in");
+        }
+    };
+
+    if (createGameInfo) {
+      getUsername();
+      }
   }, [createGameInfo]);
 
   useEffect(() => {
+    
+
     const createGame = async (gameData) => {
       const options = {
         method: "POST",
@@ -171,6 +191,7 @@ const CreatePage = () => {
         console.warn(err);
       }
     };
+    // console.log(gameInfo)
 
     if (
       gameInfo &&
@@ -179,9 +200,15 @@ const CreatePage = () => {
       gameInfo.topics[2]
     ) {
       createGame(gameInfo);
-    } else {
-      console.log("Please select 3 topics");
+    } 
+    else if (gameInfo == null) {
+
     }
+    else  {
+      alert("Please select 3 topics")
+
+    }
+
   }, [gameInfo]);
 
   const createQuiz = (e) => {
