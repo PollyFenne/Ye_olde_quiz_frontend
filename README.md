@@ -4,41 +4,54 @@
 
 Ye Olde Quiz is a quiz website inspired by everyone's favorite activity...a Pub Quiz!
 
-## Motivation
+## Motivation :muscle:
 
-This project is part of the futureproof curriculum for LAP 3 project. We were tasked with the creation of a quiz website. 
+This project is part of the futureproof curriculum for LAP 3 project. We were tasked with the creation of a quiz website.
 
-## Installation and Usage.
+## Installation and Usage
 
-### Installation
+Note: This repository contains the frontend of the application.
 
-### Usage
+You can find the repository for the connected API [here](https://github.com/shedp/YeOldeQuizzBackend).
 
+### Installation :inbox_tray:
 
-## Technologies
+- Clone or download this repository.
+- `npm install` to install the dependencies
+- Ensure the server in the [backend repository](https://github.com/shedp/YeOldeQuizzBackend) is running.
 
+### Usage :open_file_folder:
 
-## Process
+- In your chosen browser (Chrome recommended) navigate to 'http://localhost:8080'
 
-- Started with half a day planning, experimenting with ideas on Figma and creating tasks in a Trello board.
-- Split up tasks into backend and frontend:
-  - Frontend was split up into the different webpages.
-  - Backend was split between defining routes and creating service methods, with testing completed after.
-- Once backend completed, all collaborated on frontend.
-- Connected up frontend and backend
-- Deployed website
-- Went through site together to identify any changes/updates needed
+## Technologies :desktop_computer:
 
-## Challenges and Wins
+- React
+- Javascript
+- CSS
+- [Socket.io](https://socket.io/)
+- Deployment: [Netlify](https://www.netlify.com/)
 
-### Challenges
+## Process :bar_chart:
 
-### Wins
+- Started with a day planning, using tools such as Figma and creating todo tasks in a Trello board.
+- Split up work into backend and frontend:
+- Once server was working, testing was done.
+- Implimented Socket.io on both the front and back end at the same time.
+- Worked together to fix any bugs and finalise small featues.
+- Deployed website.
 
-Page insight?
+# Challeges and Wins
 
-## Future Features
+### Challenges :no_entry:
 
+### Wins :trophy:
+
+## Bugs :bug:
+
+None so far :crossed_fingers:
+
+## Future Features :timer_clock:
 
 ## Contributors
 
