@@ -8,6 +8,7 @@ import FetchQuiz from "../../components/FetchQuiz";
 import Timer from "../../components/Timer";
 import Modal from "../../components/Modal";
 import { SocketContext } from "../../socket";
+import "./styles.css";
 
 const GamePage = () => {
   const [userscore, setUserScore] = useState(0);
@@ -22,6 +23,18 @@ const GamePage = () => {
     socket.on("wait-for-others", (usersCompleted, totalUsers) => {
       setWaiting(`Waiting for others... ${usersCompleted}/${totalUsers}`);
     });
+
+    socket.on("next-round", (scores) => {
+      socket.emit("leave-waiting", location.state.gameInfo.join_code);
+      console.log(scores.sort((a, b) => (a.userscore > b.userscore ? 1 : -1)));
+      // Hide modal
+      // setShowModal(false);
+      // Hide current round
+
+      // Show leader for 3 seconds ?
+
+      // Show next round
+    });
   }, [socket]);
 
   const handleSubmit = (e) => {
@@ -34,7 +47,10 @@ const GamePage = () => {
     setUserScore(score);
     console.log(score);
     setShowModal(true);
-    socket.emit("user-complete", location.state.gameInfo.join_code);
+    socket.emit("user-complete", location.state.gameInfo.join_code, {
+      socket_id: socket.id,
+      userscore,
+    });
   };
 
   const handleTimerSubmit = () => {
@@ -46,7 +62,10 @@ const GamePage = () => {
     setUserScore(score);
     console.log(userscore);
     setShowModal(true);
-    socket.emit("user-complete", location.state.gameInfo.join_code);
+    socket.emit("user-complete", location.state.gameInfo.join_code, {
+      socket_id: socket.id,
+      userscore,
+    });
   };
 
   console.log("gamepage", location.state);
@@ -54,7 +73,6 @@ const GamePage = () => {
     <div className="gameMain">
       <Banner />
       <div className="gameMainContent">
-        <h1>Gamepage</h1>
         <Timer handleTimerSubmit={handleTimerSubmit} />
         <FetchQuiz allInfo={location.state} handleSubmit={handleSubmit} />
       </div>

@@ -5,11 +5,16 @@
   padding: 1.5rem;
   border-radius: 20px;
   background-color: var(--vintagewhite);
+  margin-bottom: 15px;
 }
 
 .joincode h1,
 .join-code p {
   text-align: center;
+}
+
+p {
+  font-size: 1.2rem;
 }
 
 .joincode {
@@ -48,8 +53,10 @@
 }
 
 .leave-lobby-button {
-  width: 25%;
-  height: 30px;
+  width: 15%;
   background-color: transparent;
   border: 1px solid var(--vintagered);
+  font-size: 1.2rem;
+  border-radius: 3px;
+  padding: 10px;
 }
