@@ -22,14 +22,14 @@ const WaitingLobby = () => {
 
   // console.log(location.state);
   const gameInfo = location.state;
-  console.log("lobby", gameInfo);
+  // console.log("lobby", gameInfo);
   const joinCode = location.state.join_code;
 
-  console.log("admin", admin);
+  // console.log("admin", admin);
 
   useEffect(() => {
     socket.on("set-admin", (isAdmin) => {
-      console.log("isAdmin", isAdmin);
+      // console.log("isAdmin", isAdmin);
       setAdmin(isAdmin);
     });
 
@@ -41,7 +41,7 @@ const WaitingLobby = () => {
     });
 
     socket.on("update-users", (socketIDs) => {
-      console.log("new socket ids", socketIDs);
+      // console.log("new socket ids", socketIDs);
       // console.log(socketIds);
       setUsers(socketIDs);
     });
@@ -53,7 +53,7 @@ const WaitingLobby = () => {
 
   useEffect(() => {
     socket.on("game-starting", () => {
-      console.log("handleStartGame");
+      // console.log("handleStartGame");
       navigate("/game", { state: { gameInfo, admin } });
     });
   }, [startGame]);

@@ -203,7 +203,7 @@ const CreatePage = () => {
     } else {
       alert("Please select 3 topics");
     }
-    console.log(gameInfo);
+    // console.log(gameInfo);
   }, [gameInfo]);
 
   const createQuiz = (e) => {
