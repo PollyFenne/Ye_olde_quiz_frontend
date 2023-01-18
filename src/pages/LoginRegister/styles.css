@@ -29,6 +29,7 @@ button {
   outline: inherit;
   border-radius: 3px;
   margin: 3px;
+  cursor: pointer;
 }
 
 button:hover {
