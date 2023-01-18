@@ -44,7 +44,6 @@ const GamePage = () => {
         setIsRoundComplete(true);
         setShowResultModal(false);
         setUserScore(null);
-        setRound(round + 1);
       }, 3000);
     });
   }, [socket]);
@@ -82,6 +81,12 @@ const GamePage = () => {
   useEffect(() => {
     setIsRoundComplete(false);
   }, [round]);
+
+  useEffect(() => {
+    if (isRoundComplete) {
+      setRound(round + 1);
+    }
+  }, [isRoundComplete]);
 
   return (
     <div className="gameMain">
