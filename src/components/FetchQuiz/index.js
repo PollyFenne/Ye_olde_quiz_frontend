@@ -1,80 +1,69 @@
-// Fetching game data component
+// Fetching quiz data component
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import shuffleArray from "../ShuffleArray";
-import CleanData from "../CleanData";
 import { SocketContext } from "../../socket";
 import { convertLevel, convertTopics } from "../../utils/fetchAPI";
+import shuffleArray from "../ShuffleArray";
+import CleanData from "../CleanData";
 import decodeHtml from "../../utils/helpers";
+import Timer from "../Timer";
+import Modal from "../Modal";
 import "./styles.css";
 
-// Needs to be a fetch
-const gameInfo = {
-  level: 3,
-  topics: ["Film", "Geography", "History"],
-};
-
-// Defining url for each topic
-const apiURLOne = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
-  gameInfo.topics[0]
-)}&difficulty=${convertLevel(gameInfo.level)}`;
-
-const apiURLTwo = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
-  gameInfo.topics[1]
-)}&difficulty=${convertLevel(gameInfo.level)}`;
-
-const apiURLThree = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
-  gameInfo.topics[2]
-)}&difficulty=${convertLevel(gameInfo.level)}`;
-
-// console.log(apiURLOne);
-
-const FetchQuiz = ({ allInfo }) => {
+const FetchQuiz = ({ allInfo, handleSubmit }) => {
+  console.log(handleSubmit);
   const socket = useContext(SocketContext);
   const [quizData, setQuizData] = useState([]);
-  const [userscore, setUserScore] = useState(0);
+  const [round, setRound] = useState(1);
 
+  const getRound = async (apiURL) => {
+    await axios
+      .get(apiURL)
+      .then((response) => {
+        socket.emit(
+          "send-questions",
+          response.data.results,
+          allInfo.gameInfo.join_code
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // Getting the round data only for the admin
   useEffect(() => {
     console.log("fetching...");
     // console.log(allInfo);
     if (allInfo.admin) {
-      axios
-        .get(apiURLOne)
-        .then((response) => {
-          socket.emit(
-            "send-questions",
-            response.data.results,
-            allInfo.gameInfo.join_code
-          );
-        })
-        .catch((error) => console.log(error));
+      const apiURL1 = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
+        allInfo.gameInfo.topics[0]
+      )}&difficulty=${convertLevel(allInfo.gameInfo.level)}`;
+
+      const apiURL2 = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
+        allInfo.gameInfo.topics[1]
+      )}&difficulty=${convertLevel(allInfo.gameInfo.level)}`;
+
+      const apiURL3 = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
+        allInfo.gameInfo.topics[2]
+      )}&difficulty=${convertLevel(allInfo.gameInfo.level)}`;
+      getRound(apiURL1);
     }
-  }, []);
+  }, [round]);
 
   useEffect(() => {
     socket.on("receive-questions", (questionsInfo) => {
       setQuizData(questionsInfo);
     });
+
+    // socket.on("wait-for-others", (usersCompleted, totalUsers) => {
+    //   console.log(`Waiting for others... ${usersCompleted}/${totalUsers}`);
+    //   socket.emit("complete-user-waiting", allInfo.gameInfo.join_code);
+    // });
   }, [socket]);
 
   console.log(quizData);
-  //   if (quizData.length > 0) {
-  //     console.log(decodeHtml(quizData[0].question));
-  //   }
 
-  const RenderQA = () => {
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      let score = 0;
-      const inputs = document.querySelectorAll("input[type=radio]:checked");
-      inputs.forEach((input) => {
-        score += parseInt(input.value);
-      });
-      setUserScore(score);
-      console.log(score);
-    };
-
-    return (
+  return (
+    <>
       <form className="question-form" onSubmit={handleSubmit}>
         {quizData.map((data, i) => {
           const choices = data.incorrect_answers.map((answer) =>
@@ -103,12 +92,6 @@ const FetchQuiz = ({ allInfo }) => {
         })}
         <button type="submit">Next Round</button>
       </form>
-    );
-  };
-
-  return (
-    <>
-      <RenderQA />
     </>
   );
 };

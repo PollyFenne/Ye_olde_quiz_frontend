@@ -1,14 +1,30 @@
-/* FETCHQUIZ SYLING */
+/* FETCH QUIZ SYLING */
 
 .question-form {
   background-color: var(--vintagewhite);
-}
-
-.QA button {
-  color: black;
-  border: 2px solid black;
+  text-align: center;
 }
 
 .QA {
   border-bottom: 2px solid var(--vintagered);
+}
+
+/* Questions */
+
+.QA h2 {
+  font-family: "Lato", sans-serif;
+}
+
+/* Answers */
+.choices input {
+  color: var(--vintagered);
+}
+
+/* Submit button */
+
+question-form button {
+  color: var(--vintagered);
+  border: 2px solid var(--vintagered);
+  padding: 10px;
+  border-radius: 10px;
 }
