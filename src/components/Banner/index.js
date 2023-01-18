@@ -1,7 +1,7 @@
 // Header/banner component
 
 import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, createSearchParams } from "react-router-dom";
 import "./styles.css";
 
 const url = "http://localhost:3000";

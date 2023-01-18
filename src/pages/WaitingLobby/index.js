@@ -7,12 +7,15 @@ import { useLocation } from "react-router-dom";
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
+const url = "http://localhost:3000";
+
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
   const [users, setUsers] = useState([]);
   //get admin_id from data
   const [admin, setAdmin] = useState("");
   const location = useLocation();
+
   // console.log(location.state);
   const joinCode = location.state.join_code;
 
@@ -27,6 +30,7 @@ const WaitingLobby = () => {
   useEffect(() => {
     console.log("in lobby", users);
   }, [users]);
+
 
   const handleStartGame = () => {
     if (admin === socket.id) {
