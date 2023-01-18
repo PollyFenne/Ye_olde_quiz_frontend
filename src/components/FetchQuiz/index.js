@@ -50,8 +50,17 @@ const FetchQuiz = ({ allInfo, handleSubmit }) => {
   }, [round]);
 
   useEffect(() => {
+    console.log("test");
     socket.on("receive-questions", (questionsInfo) => {
-      setQuizData(questionsInfo);
+      const shuffled = questionsInfo.map((data, i) => {
+        const choices = data.incorrect_answers.map((answer) =>
+          decodeHtml(answer)
+        );
+        choices.push(decodeHtml(data.correct_answer));
+
+        return { ...data, options: shuffleArray(choices) };
+      });
+      setQuizData(shuffled);
     });
 
     // socket.on("wait-for-others", (usersCompleted, totalUsers) => {
@@ -60,32 +69,30 @@ const FetchQuiz = ({ allInfo, handleSubmit }) => {
     // });
   }, [socket]);
 
-  console.log(quizData);
+  // console.log("quizdata", quizData);
 
   return (
     <>
       <form className="question-form" onSubmit={handleSubmit}>
         {quizData.map((data, i) => {
-          const choices = data.incorrect_answers.map((answer) =>
-            decodeHtml(answer)
-          );
-          choices.push(decodeHtml(data.correct_answer));
-
+          // console.log("data", data);
           return (
             <div className="QA" key={i}>
               <h3>{decodeHtml(data.question)}</h3>
               <div className="choices">
-                {shuffleArray(choices).map((choice, j) => (
-                  <div className="choice">
-                    <input
-                      type="radio"
-                      value={choice == data.correct_answer ? 1 : 0}
-                      key={j}
-                      name={data.question}
-                    />
-                    <label>{choice}</label>
-                  </div>
-                ))}
+                {data.options.map((choice, j) => {
+                  return (
+                    <div className="choice">
+                      <input
+                        type="radio"
+                        value={choice == data.correct_answer ? 1 : 0}
+                        key={j}
+                        name={data.question}
+                      />
+                      <label>{choice}</label>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );

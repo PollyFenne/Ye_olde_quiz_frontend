@@ -20,14 +20,17 @@ const GamePage = () => {
   const location = useLocation();
 
   useEffect(() => {
+    console.log("rendering");
     socket.on("wait-for-others", (usersCompleted, totalUsers) => {
-      setWaiting(`Waiting for others... ${usersCompleted}/${totalUsers}`);
+      setWaiting(`waiting for others... ${usersCompleted}/${totalUsers}`);
     });
 
     socket.on("next-round", (scores) => {
       socket.emit("leave-waiting", location.state.gameInfo.join_code);
-      console.log(scores.sort((a, b) => (a.userscore > b.userscore ? 1 : -1)));
+      console.log(scores);
+      // // setWaiting(scores);
       // Hide modal
+
       // setShowModal(false);
       // Hide current round
 
@@ -37,7 +40,14 @@ const GamePage = () => {
     });
   }, [socket]);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    socket.emit("user-complete", location.state.gameInfo.join_code, {
+      socket_id: socket.id,
+      userscore,
+    });
+  }, [userscore]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
@@ -45,22 +55,17 @@ const GamePage = () => {
       score += parseInt(input.value);
     });
     setUserScore(score);
-    console.log(score);
     setShowModal(true);
-    socket.emit("user-complete", location.state.gameInfo.join_code, {
-      socket_id: socket.id,
-      userscore,
-    });
   };
 
   const handleTimerSubmit = () => {
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
+
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
     setUserScore(score);
-    console.log(userscore);
     setShowModal(true);
     socket.emit("user-complete", location.state.gameInfo.join_code, {
       socket_id: socket.id,
@@ -76,7 +81,7 @@ const GamePage = () => {
         <Timer handleTimerSubmit={handleTimerSubmit} />
         <FetchQuiz allInfo={location.state} handleSubmit={handleSubmit} />
       </div>
-      <Modal showModal={showModal} waiting={waiting} />
+      {showModal && <Modal waiting={waiting} />}
     </div>
   );
 };
