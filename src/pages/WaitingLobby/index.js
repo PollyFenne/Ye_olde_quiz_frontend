@@ -23,6 +23,13 @@ const WaitingLobby = () => {
   const joinCode = location.state.join_code;
 
   useEffect(() => {
+    socket.on("disconnect-user", (socket_id, message) => {
+      const findUser = [...users];
+      const newUsers = findUser.splice(findUser.indexOf(socket_id), 1);
+      setUsers(newUsers);
+      navigate("/join");
+    });
+
     socket.on("update-users", (socketIDs) => {
       console.log("new socket ids", socketIDs);
       // console.log(socketIds);
@@ -41,6 +48,10 @@ const WaitingLobby = () => {
     });
   }, [startGame]);
 
+  const handleLeave = async () => {
+    await socket.emit("leave-game", gameinfo);
+  };
+
   const handleStartGame = async () => {
     await socket.emit("start-game", gameinfo);
     setStartGame(true);
@@ -54,7 +65,16 @@ const WaitingLobby = () => {
         <h1>Join Code: {joinCode}</h1>
         <p>Share this code with your friends</p>
       </div>
-      <UsersList users={users} />
+      <div className="waiting-room-container">
+        <UsersList users={users} />
+        <button
+          onClick={handleLeave}
+          className="leave-lobby-button"
+          type="button"
+        >
+          Leave lobby
+        </button>
+      </div>
       <button onClick={handleStartGame}>Start Game</button>
     </div>
   );
