@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
@@ -35,8 +36,10 @@ const WaitingLobby = () => {
   const handleStartGame = () => {
     if (admin === socket.id) {
       socket.emit("start-game");
-    }
-  };
+    //   navigate("/game", {
+    //   state: { join_code: joinCode }
+    // });
+  }};
 
   return (
     <div className="lobbyMain">
@@ -50,5 +53,6 @@ const WaitingLobby = () => {
     </div>
   );
 };
+
 
 export default WaitingLobby;
