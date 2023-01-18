@@ -1,2 +1,14 @@
 /* GAMEPAGE STYLING */
 
+.gameMain {
+  margin: 0px;
+  width: 100%;
+  max-height: 100%;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: var(--vintagewhite);
+}
+
+.gameMainContent * {
+  background-color: var(--vintagewhite);
+}

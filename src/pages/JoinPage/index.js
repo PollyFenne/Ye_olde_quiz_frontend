@@ -26,7 +26,7 @@ function JoinPage() {
 
   return (
     <div className="joinMain">
-      <Banner />
+      <Banner displayBack={true} />
       <form onSubmit={handleSubmit}>
         <div className="join-code">
           <label htmlFor="join" className="join-text">
