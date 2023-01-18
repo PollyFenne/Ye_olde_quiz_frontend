@@ -15,6 +15,10 @@ function JoinPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     socket.emit("join-game", { join_code: joinCode });
+    socket.on("max-users-error", (message) => {
+      navigate("/join");
+      alert(message);
+    });
     navigate("/waiting-lobby", {
       state: { join_code: joinCode },
     });
