@@ -15,7 +15,7 @@ const WaitingLobby = () => {
   const [users, setUsers] = useState([]);
   const [startGame, setStartGame] = useState(false);
   //get admin_id from data
-  const [admin, setAdmin] = useState("");
+  const [admin, setAdmin] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,7 +25,14 @@ const WaitingLobby = () => {
   console.log("lobby", gameinfo);
   const joinCode = location.state.join_code;
 
+  console.log("admin", admin);
+
   useEffect(() => {
+    socket.on("set-admin", (isAdmin) => {
+      console.log("isAdmin", isAdmin);
+      setAdmin(isAdmin);
+    });
+
     socket.on("disconnect-user", (socket_id, message) => {
       const findUser = [...users];
       const newUsers = findUser.splice(findUser.indexOf(socket_id), 1);
@@ -51,17 +58,14 @@ const WaitingLobby = () => {
     });
   }, [startGame]);
 
-
   const handleLeave = async () => {
     await socket.emit("leave-game", gameinfo);
   };
-
 
   const handleStartGame = async () => {
     await socket.emit("start-game", gameinfo);
     setStartGame(true);
     navigate("/game", { state: gameinfo });
-
   };
 
   return (
@@ -81,7 +85,7 @@ const WaitingLobby = () => {
           Leave lobby
         </button>
       </div>
-      <button onClick={handleStartGame}>Start Game</button>
+      {admin && <button onClick={handleStartGame}>Start Game</button>}
     </div>
   );
 };
