@@ -3,17 +3,23 @@
 import React, { useState, useEffect, useContext } from "react";
 import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
   const [users, setUsers] = useState([]);
+  const [startGame, setStartGame] = useState(false);
   //get admin_id from data
   const [admin, setAdmin] = useState("");
+
+  const navigate = useNavigate();
   const location = useLocation();
+
   // console.log(location.state);
+  const gameinfo = location.state;
+  console.log("lobby", gameinfo);
   const joinCode = location.state.join_code;
 
   useEffect(() => {
@@ -22,16 +28,23 @@ const WaitingLobby = () => {
       // console.log(socketIds);
       setUsers(socketIDs);
     });
+
+    // socket.on("game-starting", () => {
+    //   navigate("/game");
+    // });
   }, [socket]);
 
   useEffect(() => {
-    console.log("in lobby", users);
-  }, [users]);
+    socket.on("game-starting", () => {
+      console.log("handleStartGame");
+      navigate("/game", { state: gameinfo });
+    });
+  }, [startGame]);
 
-  const handleStartGame = () => {
-    if (admin === socket.id) {
-      socket.emit("start-game");
-    }
+  const handleStartGame = async () => {
+    await socket.emit("start-game", gameinfo);
+    setStartGame(true);
+    navigate("/game", { state: gameinfo });
   };
 
   return (
