@@ -73,10 +73,10 @@ const FetchQuiz = ({ allInfo, handleSubmit }) => {
 
           return (
             <div className="QA" key={i}>
-              <h2>{decodeHtml(data.question)}</h2>
+              <h3>{decodeHtml(data.question)}</h3>
               <div className="choices">
                 {shuffleArray(choices).map((choice, j) => (
-                  <>
+                  <div className="choice">
                     <input
                       type="radio"
                       value={choice == data.correct_answer ? 1 : 0}
@@ -84,7 +84,7 @@ const FetchQuiz = ({ allInfo, handleSubmit }) => {
                       name={data.question}
                     />
                     <label>{choice}</label>
-                  </>
+                  </div>
                 ))}
               </div>
             </div>
