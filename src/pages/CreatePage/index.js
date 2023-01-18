@@ -8,6 +8,7 @@ import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
 
 import "./styles.css";
+import FetchQuiz from "../../components/FetchQuiz";
 
 const url = "http://localhost:3000";
 
@@ -208,6 +209,7 @@ const CreatePage = () => {
       alert("Please select 3 topics")
 
     }
+    console.log(gameInfo)
 
   }, [gameInfo]);
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
@@ -84,5 +85,6 @@ const WaitingLobby = () => {
     </div>
   );
 };
+
 
 export default WaitingLobby;
