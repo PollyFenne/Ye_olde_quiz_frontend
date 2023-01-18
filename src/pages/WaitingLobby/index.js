@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
@@ -13,33 +13,56 @@ const url = "http://localhost:3000";
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
   const [users, setUsers] = useState([]);
+  const [startGame, setStartGame] = useState(false);
   //get admin_id from data
   const [admin, setAdmin] = useState("");
+
+  const navigate = useNavigate();
   const location = useLocation();
 
   // console.log(location.state);
+  const gameinfo = location.state;
+  console.log("lobby", gameinfo);
   const joinCode = location.state.join_code;
 
   useEffect(() => {
+    socket.on("disconnect-user", (socket_id, message) => {
+      const findUser = [...users];
+      const newUsers = findUser.splice(findUser.indexOf(socket_id), 1);
+      setUsers(newUsers);
+      navigate("/join");
+    });
+
     socket.on("update-users", (socketIDs) => {
       console.log("new socket ids", socketIDs);
       // console.log(socketIds);
       setUsers(socketIDs);
     });
+
+    // socket.on("game-starting", () => {
+    //   navigate("/game");
+    // });
   }, [socket]);
 
   useEffect(() => {
-    console.log("in lobby", users);
-  }, [users]);
+    socket.on("game-starting", () => {
+      console.log("handleStartGame");
+      navigate("/game", { state: gameinfo });
+    });
+  }, [startGame]);
 
 
-  const handleStartGame = () => {
-    if (admin === socket.id) {
-      socket.emit("start-game");
-    //   navigate("/game", {
-    //   state: { join_code: joinCode }
-    // });
-  }};
+  const handleLeave = async () => {
+    await socket.emit("leave-game", gameinfo);
+  };
+
+
+  const handleStartGame = async () => {
+    await socket.emit("start-game", gameinfo);
+    setStartGame(true);
+    navigate("/game", { state: gameinfo });
+
+  };
 
   return (
     <div className="lobbyMain">
@@ -48,7 +71,16 @@ const WaitingLobby = () => {
         <h1>Join Code: {joinCode}</h1>
         <p>Share this code with your friends</p>
       </div>
-      <UsersList users={users} />
+      <div className="waiting-room-container">
+        <UsersList users={users} />
+        <button
+          onClick={handleLeave}
+          className="leave-lobby-button"
+          type="button"
+        >
+          Leave lobby
+        </button>
+      </div>
       <button onClick={handleStartGame}>Start Game</button>
     </div>
   );

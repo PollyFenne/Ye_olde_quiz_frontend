@@ -40,3 +40,16 @@
   background-color: var(--vintagered);
   color: var(--vintagewhite);
 }
+
+.waiting-room-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leave-lobby-button {
+  width: 25%;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid var(--vintagered);
+}
