@@ -10,11 +10,10 @@ import Timer from "../Timer";
 import Modal from "../Modal";
 import "./styles.css";
 
-const FetchQuiz = ({ allInfo, handleSubmit }) => {
-  console.log(handleSubmit);
+const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
+  console.log(round);
   const socket = useContext(SocketContext);
   const [quizData, setQuizData] = useState([]);
-  const [round, setRound] = useState(1);
 
   const getRound = async (apiURL) => {
     await axios
@@ -31,7 +30,6 @@ const FetchQuiz = ({ allInfo, handleSubmit }) => {
 
   // Getting the round data only for the admin
   useEffect(() => {
-    console.log("fetching...");
     // console.log(allInfo);
     if (allInfo.admin) {
       const apiURL1 = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
@@ -45,12 +43,22 @@ const FetchQuiz = ({ allInfo, handleSubmit }) => {
       const apiURL3 = `https://opentdb.com/api.php?amount=10&category=${convertTopics(
         allInfo.gameInfo.topics[2]
       )}&difficulty=${convertLevel(allInfo.gameInfo.level)}`;
-      getRound(apiURL1);
+
+      switch (round) {
+        case 1:
+          getRound(apiURL1);
+          break;
+        case 2:
+          getRound(apiURL2);
+          break;
+        case 3:
+          getRound(apiURL3);
+          break;
+      }
     }
   }, [round]);
 
   useEffect(() => {
-    console.log("test");
     socket.on("receive-questions", (questionsInfo) => {
       const shuffled = questionsInfo.map((data, i) => {
         const choices = data.incorrect_answers.map((answer) =>

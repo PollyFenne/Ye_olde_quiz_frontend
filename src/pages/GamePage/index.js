@@ -7,44 +7,55 @@ import Banner from "../../components/Banner";
 import FetchQuiz from "../../components/FetchQuiz";
 import Timer from "../../components/Timer";
 import Modal from "../../components/Modal";
+import ShowResultModal from "../../components/showResultModal";
 import { SocketContext } from "../../socket";
 import "./styles.css";
 
 const GamePage = () => {
-  const [userscore, setUserScore] = useState(0);
+  const [round, setRound] = useState(1);
+  const [isRoundComplete, setIsRoundComplete] = useState(false);
+
+  const [userscore, setUserScore] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [waiting, setWaiting] = useState("");
+
+  const [showResultModal, setShowResultModal] = useState(false);
+  const [allScores, setAllScores] = useState([]);
 
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    console.log("rendering");
     socket.on("wait-for-others", (usersCompleted, totalUsers) => {
       setWaiting(`waiting for others... ${usersCompleted}/${totalUsers}`);
     });
 
     socket.on("next-round", (scores) => {
       socket.emit("leave-waiting", location.state.gameInfo.join_code);
-      console.log(scores);
-      // // setWaiting(scores);
+
+      setAllScores(scores);
+
+      console.log("testing");
       // Hide modal
-
-      // setShowModal(false);
-      // Hide current round
-
-      // Show leader for 3 seconds ?
-
-      // Show next round
+      setShowModal(false);
+      setShowResultModal(true);
+      setTimeout(() => {
+        setIsRoundComplete(true);
+        setShowResultModal(false);
+        setUserScore(null);
+        setRound(round + 1);
+      }, 3000);
     });
   }, [socket]);
 
   useEffect(() => {
-    socket.emit("user-complete", location.state.gameInfo.join_code, {
-      socket_id: socket.id,
-      userscore,
-    });
+    if (userscore != null) {
+      socket.emit("user-complete", location.state.gameInfo.join_code, {
+        socket_id: socket.id,
+        userscore,
+      });
+    }
   }, [userscore]);
 
   const handleSubmit = async (e) => {
@@ -61,27 +72,33 @@ const GamePage = () => {
   const handleTimerSubmit = () => {
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
-
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
     setUserScore(score);
     setShowModal(true);
-    socket.emit("user-complete", location.state.gameInfo.join_code, {
-      socket_id: socket.id,
-      userscore,
-    });
   };
 
-  console.log("gamepage", location.state);
+  useEffect(() => {
+    setIsRoundComplete(false);
+  }, [round]);
+
   return (
     <div className="gameMain">
       <Banner />
       <div className="gameMainContent">
-        <Timer handleTimerSubmit={handleTimerSubmit} />
-        <FetchQuiz allInfo={location.state} handleSubmit={handleSubmit} />
+        <Timer
+          handleTimerSubmit={handleTimerSubmit}
+          isRoundComplete={isRoundComplete}
+        />
+        <FetchQuiz
+          allInfo={location.state}
+          handleSubmit={handleSubmit}
+          round={round}
+        />
       </div>
       {showModal && <Modal waiting={waiting} />}
+      {showResultModal && <ShowResultModal scores={allScores} />}
     </div>
   );
 };

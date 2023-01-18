@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-const Timer = ({ handleTimerSubmit }) => {
+const Timer = ({ handleTimerSubmit, isRoundComplete }) => {
   const [timeLeft, setTimeLeft] = useState(30);
   const [isTimeUp, setIsTimeUp] = useState(false);
+
+  useEffect(() => {
+    if (isRoundComplete) {
+      setTimeLeft(30);
+    }
+  }, [isRoundComplete]);
 
   const handleTimer = (endTime) => {
     setIsTimeUp(true);
