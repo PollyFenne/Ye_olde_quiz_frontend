@@ -14,7 +14,7 @@ function JoinPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    socket.emit("join-game", joinCode);
+    socket.emit("join-game", { join_code: joinCode });
     navigate("/waiting-lobby", {
       state: { join_code: joinCode },
     });

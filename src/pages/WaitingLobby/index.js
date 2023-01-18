@@ -5,6 +5,7 @@ import Banner from "../../components/Banner";
 import { SocketContext } from "../../socket";
 import { useLocation } from "react-router-dom";
 import "./styles.css";
+import UsersList from "../../components/UsersList";
 
 const url = "http://localhost:3000";
 
@@ -14,25 +15,27 @@ const WaitingLobby = () => {
   //get admin_id from data
   const [admin, setAdmin] = useState("");
   const location = useLocation();
-  const joinCode = location.state.createGameInfo.join_code;
-  const username = location.state.username;
 
+  // console.log(location.state);
+  const joinCode = location.state.join_code;
 
-  // Listing users in the lobby
-  socket.on("add-player", () => {
+  useEffect(() => {
+    socket.on("update-users", (socketIDs) => {
+      console.log("new socket ids", socketIDs);
+      // console.log(socketIds);
+      setUsers(socketIDs);
+    });
+  }, [socket]);
 
-  })
+  useEffect(() => {
+    console.log("in lobby", users);
+  }, [users]);
+
 
   const handleStartGame = () => {
     if (admin === socket.id) {
       socket.emit("start-game");
     }
-  };
-
-  const renderUsers = () => {
-    users.map((user) => {
-      return <p>{user} has joined the lobby</p>;
-    });
   };
 
   return (
@@ -42,10 +45,7 @@ const WaitingLobby = () => {
         <h1>Join Code: {joinCode}</h1>
         <p>Share this code with your friends</p>
       </div>
-      <div className="lobby">
-        <h2>In the waiting room...</h2>
-        {renderUsers()}
-      </div>
+      <UsersList users={users} />
       <button onClick={handleStartGame}>Start Game</button>
     </div>
   );

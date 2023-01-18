@@ -146,7 +146,9 @@ const CreatePage = () => {
     if (username) {
       io.emit("create-game", createGameInfo, username);
       navigate("/waiting-lobby", {
-        state: { createGameInfo, username},
+
+        state: createGameInfo,
+
       });
     }
   }, [username]);
@@ -198,17 +200,13 @@ const CreatePage = () => {
       gameInfo.topics[2]
     ) {
       createGame(gameInfo);
-      //.then(response => {
-      //    if (response.status == 200) {
-      //      navigate("/waiting-lobby");
-      //   }})
-      //.catch(error => {console.log(error)})
     } 
     else if (gameInfo == null) {
 
     }
     else  {
       alert("Please select 3 topics")
+
     }
 
   }, [gameInfo]);
