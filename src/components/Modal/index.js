@@ -1,15 +1,13 @@
 import React from "react";
 import "./styles.css";
 
-const Modal = ({ showModal, waiting }) => {
+const Modal = ({ waiting }) => {
   return (
     <>
-      {showModal && (
-        <div className="modal">
-          <h2>Thanks for submitting you answers</h2>
-          <h3>{waiting}.</h3>
-        </div>
-      )}
+      <div className="modal">
+        <h2>Thanks for submitting you answers</h2>
+        <h3>{waiting}.</h3>
+      </div>
     </>
   );
 };
