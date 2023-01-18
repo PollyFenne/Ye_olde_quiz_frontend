@@ -21,8 +21,8 @@ const WaitingLobby = () => {
   const location = useLocation();
 
   // console.log(location.state);
-  const gameinfo = location.state;
-  console.log("lobby", gameinfo);
+  const gameInfo = location.state;
+  console.log("lobby", gameInfo);
   const joinCode = location.state.join_code;
 
   console.log("admin", admin);
@@ -54,18 +54,19 @@ const WaitingLobby = () => {
   useEffect(() => {
     socket.on("game-starting", () => {
       console.log("handleStartGame");
-      navigate("/game", { state: gameinfo });
+      navigate("/game", { state: { gameInfo, admin } });
     });
   }, [startGame]);
 
   const handleLeave = async () => {
-    await socket.emit("leave-game", gameinfo);
+    await socket.emit("leave-game", gameInfo);
   };
 
   const handleStartGame = async () => {
-    await socket.emit("start-game", gameinfo);
+    await socket.emit("start-game", gameInfo);
     setStartGame(true);
-    navigate("/game", { state: gameinfo });
+
+    navigate("/game", { state: { gameInfo, admin } });
   };
 
   return (
@@ -89,6 +90,5 @@ const WaitingLobby = () => {
     </div>
   );
 };
-
 
 export default WaitingLobby;

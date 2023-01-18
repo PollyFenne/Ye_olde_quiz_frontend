@@ -1,6 +1,14 @@
 /* FETCHQUIZ SYLING */
 
+.question-form {
+  background-color: var(--vintagewhite);
+}
+
 .QA button {
-    color: black;
-    border: 2px solid black;
+  color: black;
+  border: 2px solid black;
+}
+
+.QA {
+  border-bottom: 2px solid var(--vintagered);
 }

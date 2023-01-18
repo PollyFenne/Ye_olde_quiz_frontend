@@ -18,10 +18,10 @@ const CreatePage = () => {
 
   const [gameInfo, setGameInfo] = useState(null);
   const [createGameInfo, setCreateInfo] = useState(null);
-  const [username, setUsername] = useState(null)
+  const [username, setUsername] = useState(null);
 
   const [color, setColor] = useState("#6db4b0");
-  const [level, setLevel] = useState("1");
+  const [level, setLevel] = useState(1);
 
   const [showRoundOne, setShowRoundOne] = useState(true);
   const [showRoundTwo, setShowRoundTwo] = useState(false);
@@ -147,32 +147,30 @@ const CreatePage = () => {
     if (username) {
       io.emit("create-game", createGameInfo, username);
       navigate("/waiting-lobby", {
-
         state: createGameInfo,
-
       });
     }
   }, [username]);
 
   useEffect(() => {
-      const getUsername = async () => {
-        try {
-          const response = await fetch(`${url}/users/user/${createGameInfo.user_id}`);
-          const data = await response.json();
-          setUsername(data.title)
-        } catch (err) {
-          console.log("no user logged in");
-        }
+    const getUsername = async () => {
+      try {
+        const response = await fetch(
+          `${url}/users/user/${createGameInfo.user_id}`
+        );
+        const data = await response.json();
+        setUsername(data.title);
+      } catch (err) {
+        console.log("no user logged in");
+      }
     };
 
     if (createGameInfo) {
       getUsername();
-      }
+    }
   }, [createGameInfo]);
 
   useEffect(() => {
-    
-
     const createGame = async (gameData) => {
       const options = {
         method: "POST",
@@ -201,16 +199,11 @@ const CreatePage = () => {
       gameInfo.topics[2]
     ) {
       createGame(gameInfo);
-    } 
-    else if (gameInfo == null) {
-
+    } else if (gameInfo == null) {
+    } else {
+      alert("Please select 3 topics");
     }
-    else  {
-      alert("Please select 3 topics")
-
-    }
-    console.log(gameInfo)
-
+    console.log(gameInfo);
   }, [gameInfo]);
 
   const createQuiz = (e) => {
