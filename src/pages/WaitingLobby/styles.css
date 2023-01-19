@@ -55,8 +55,19 @@ p {
 .leave-lobby-button {
   width: 15%;
   background-color: transparent;
-  border: 1px solid var(--vintagered);
-  font-size: 1.2rem;
-  border-radius: 3px;
-  padding: 10px;
+  border: 2px solid var(--vintagered);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.start-game-button {
+  width: 15%;
+  background-color: transparent;
+  border: 2px solid var(--vintagered);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 15px;
 }

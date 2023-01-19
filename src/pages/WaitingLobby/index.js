@@ -86,7 +86,7 @@ const WaitingLobby = () => {
           Leave lobby
         </button>
       </div>
-      {admin && <button onClick={handleStartGame}>Start Game</button>}
+      {admin && <button onClick={handleStartGame} className="start-game-button">Start Game</button>}
     </div>
   );
 };
