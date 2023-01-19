@@ -60,7 +60,7 @@ const Banner = ({ isHome, displayBack }) => {
   return (
     <div className="banner">
       <div className="logo">
-        <img src="../../assets/images/Logo1.png" alt="Logo" height={"100px"} />
+        <img src="../../assets/images/Logo1.png" alt="Logo" height={"130px"} />
       </div>
       <div className="username">
         {username ? (
