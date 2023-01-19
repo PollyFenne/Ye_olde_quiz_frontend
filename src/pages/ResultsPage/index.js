@@ -75,7 +75,7 @@ const ResultsPage = () => {
       ) : (
         <h1 className="winner-loser-message">Loser, get smarter</h1>
       )}
-      <h1 className="final-result-message">Final Results...</h1>
+      <h1 className="final-result-message">Final results...</h1>
       <ul className="final-score">
         {orderedScores.map((finalScore, i) => {
           return (

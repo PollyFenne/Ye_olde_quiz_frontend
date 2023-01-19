@@ -53,7 +53,7 @@
 
 .loginButtons button:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
 
 @media (max-width: 675px) {
@@ -122,5 +122,5 @@
 }
 .loginButtons button:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }

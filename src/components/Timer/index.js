@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Timer = ({ handleTimerSubmit, isRoundComplete }) => {
-  const [timeLeft, setTimeLeft] = useState(30);
+  const [timeLeft, setTimeLeft] = useState(30000);
   const [isTimeUp, setIsTimeUp] = useState(false);
 
   // console.log(isRoundComplete);

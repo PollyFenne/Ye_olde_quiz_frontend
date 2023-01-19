@@ -25,11 +25,18 @@ const WaitingLobby = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log("Waiting users", users);
   // console.log(location.state);
   const gameInfo = location.state.createGameInfo;
   // console.log("lobby", gameInfo);
   const username = location.state.username;
   const joinCode = location.state.createGameInfo.join_code;
+
+  useEffect(() => {
+    if (admin) {
+      setUsers([username]);
+    }
+  }, [admin]);
 
   useEffect(() => {
     if (admin) {
@@ -55,6 +62,7 @@ const WaitingLobby = () => {
     });
 
     socket.on("update-users", (users) => {
+      console.log("update-users", users);
       // console.log("new socket ids", socketIDs);
       // console.log(socketIds);
       setUsers(users);

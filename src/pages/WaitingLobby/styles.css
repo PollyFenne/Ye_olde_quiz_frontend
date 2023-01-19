@@ -9,8 +9,9 @@
 }
 
 .joincode h1,
-.join-code p {
+.joincode p {
   text-align: center;
+  margin-bottom: 8px;
 }
 
 p {
@@ -19,7 +20,7 @@ p {
 
 .joincode {
   border-bottom: 1px solid var(--vintagered);
-  padding: 2rem 0rem;
+  padding: 0 0 30px;
 }
 
 .lobby {
@@ -28,7 +29,7 @@ p {
 
 /* SUBMIT */
 
-.submit-button {
+/* .submit-button {
   background-color: var(--vintagewhite);
   color: var(--vintagered);
   font-family: "Lato", sans-serif;
@@ -39,7 +40,7 @@ p {
   border-radius: 20px;
   border: 2px solid var(--vintagered);
   cursor: pointer;
-}
+} */
 
 .submit-button:hover {
   background-color: var(--vintagered);
@@ -66,7 +67,7 @@ p {
 
 .leave-lobby-button:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
 
 .start-game-button {
@@ -82,5 +83,5 @@ p {
 
 .start-game-button:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
