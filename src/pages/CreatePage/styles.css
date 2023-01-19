@@ -35,14 +35,13 @@
 
 /* DIFFICULTY */
 
-
 .select-difficulty-container {
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
 }
 
 .difficulty-buttons-container {
@@ -118,6 +117,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .round-buttons-container {
@@ -191,6 +191,74 @@
   border: 2px solid var(--vintagered);
   cursor: pointer;
 }
+
+.submit-button:hover {
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
+}
+
+@media (max-width: 900px) {
+  .title-heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 785px) {
+  .title-heading {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .title-heading {
+    font-size: 1.5rem;
+    padding: 20px;
+  }
+  .create-game-form {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .round-button,
+  .difficulty-button {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .difficulty-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 515px) {
+  .title-heading {
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+  .create-game-form {
+    padding: 0 10px;
+  }
+  .round-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .select-difficulty-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .select-difficulty-container {
+    padding: 1rem;
+  }
+}
+/* order: 2px solid var(--vintagered);
+  cursor: pointer;
+} */
 
 .submit-button:hover {
   background-color: var(--vintagered);
