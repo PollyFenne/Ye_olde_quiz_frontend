@@ -54,7 +54,9 @@ You can find the repository for the connected API [here](https://github.com/shed
 
 ## Bugs :bug:
 
-None so far :crossed_fingers:
+### Multiple games at one go
+
+Having multiple games running simultaneously will cause some bugs
 
 ## Future Features :timer_clock:
 
