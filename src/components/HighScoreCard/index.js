@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./styles.css";
 
@@ -19,10 +19,13 @@ const HighScoreCard = () => {
     }
   };
 
+  useEffect(() => {
+    getHighScore();
+  }, [highScore]);
+
   return (
     <div className="high-score-card">
-      <h2>High Score:</h2>
-      <h2>{highScore}</h2>
+      <h2>High Score: {highScore}</h2>
     </div>
   );
 };

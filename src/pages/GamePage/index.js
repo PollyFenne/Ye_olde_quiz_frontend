@@ -17,6 +17,7 @@ const GamePage = () => {
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const username = location.state.username;
 
   const [round, setRound] = useState(1);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
@@ -114,7 +115,7 @@ const GamePage = () => {
       setShowResultModal(true);
       setTimeout(() => {
         navigate("/results", {
-          state: { gameInfo: location.state.gameInfo, finalScores },
+          state: { gameInfo: location.state.gameInfo, finalScores, username },
         });
       }, 3000);
     });
