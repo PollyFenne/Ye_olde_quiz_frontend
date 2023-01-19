@@ -1,0 +1,20 @@
+/* Results Page styling */
+
+.result-page {
+    font-family: 'Lato', san serif;
+    font-size: 2rem;
+    color: var(--vintagered);
+}
+
+.leave-game-button {
+    cursor: pointer;
+    color: var(--vintagered);
+    margin: 20px auto;
+    font-size: 1.5rem;
+    font-family: "Lato", sans-serif;
+    width: 25%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--vintagered);
+    border-radius: 15px;
+}
