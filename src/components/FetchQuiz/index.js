@@ -11,7 +11,7 @@ import Modal from "../Modal";
 import "./styles.css";
 
 const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
-  console.log(round);
+  // console.log(round);
   const socket = useContext(SocketContext);
   const [quizData, setQuizData] = useState([]);
 
