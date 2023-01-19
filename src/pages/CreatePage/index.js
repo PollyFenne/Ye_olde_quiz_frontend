@@ -145,9 +145,9 @@ const CreatePage = () => {
 
   useEffect(() => {
     if (username) {
-      io.emit("create-game", createGameInfo, username);
+      io.emit("create-game", { gameInfo: createGameInfo, username });
       navigate("/waiting-lobby", {
-        state: createGameInfo,
+        state: { createGameInfo, username },
       });
     }
   }, [username]);
