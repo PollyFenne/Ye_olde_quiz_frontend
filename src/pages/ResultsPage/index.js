@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SocketContext } from "../../socket";
 
+import './styles.css'
+
 const ResultsPage = () => {
   const socket = useContext(SocketContext);
   const location = useLocation();
@@ -37,9 +39,9 @@ const ResultsPage = () => {
   return (
     <div className="result-page">
       {won ? (
-        <h1 className="winner-message">Winner winner chicken dinner</h1>
+        <h1 className="winner-loser-message">Winner winner chicken dinner</h1>
       ) : (
-        <h1 className="loser-message">Loser, get smarter</h1>
+        <h1 className="winner-loser-message">Loser, get smarter</h1>
       )}
       <h1 className="final-result-message">Final Results...</h1>
       <ul className="final-score">
