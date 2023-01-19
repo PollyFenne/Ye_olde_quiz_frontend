@@ -1,4 +1,7 @@
+// Results are each round
+
 import React from "react";
+import './styles.css'
 
 const ShowResultModal = ({ scores, round, correctAnswers }) => {
   const renderCorrectAnswers = () => {

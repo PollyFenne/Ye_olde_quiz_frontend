@@ -1,0 +1,24 @@
+/* ShowResultModal styling */
+
+.round-results-modal{
+    font-size: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0px;
+    background-color: rgb(255, 243, 227, 0.7);
+    z-index: 10;
+    text-align: center;
+    padding-top: 20%;
+    font-family: "Lato", sans-serif;
+}
+
+.round-result-score{
+    list-style: none;
+}
+
+.round-result-score li {
+    font-size: 1.5rem;
+}
