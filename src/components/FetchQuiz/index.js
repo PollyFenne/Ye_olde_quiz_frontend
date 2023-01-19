@@ -4,7 +4,6 @@ import axios from "axios";
 import { SocketContext } from "../../socket";
 import { convertLevel, convertTopics } from "../../utils/fetchAPI";
 import shuffleArray from "../ShuffleArray";
-import CleanData from "../CleanData";
 import decodeHtml from "../../utils/helpers";
 import Timer from "../Timer";
 import Modal from "../Modal";
@@ -130,13 +129,13 @@ const FetchQuiz = ({
                 {data.options.map((choice, j) => {
                   return (
                     <div className="choice">
+                      <label>{choice}</label>
                       <input
                         type="radio"
                         value={choice == data.correct_answer ? 1 : 0}
                         key={j}
                         name={data.question}
                       />
-                      <label>{choice}</label>
                     </div>
                   );
                 })}

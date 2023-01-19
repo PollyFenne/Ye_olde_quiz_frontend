@@ -14,9 +14,14 @@ import "./styles.css";
 const url = "http://localhost:3000";
 
 const GamePage = () => {
+  const socket = useContext(SocketContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [round, setRound] = useState(1);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
-  const [roundIDs, setRoundIDs] = useState(null);
+  const [roundIDs, setRoundIDs] = useState(location.state.round_ids);
+  const [roundScore, setRoundScore] = useState(0);
 
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
@@ -29,48 +34,39 @@ const GamePage = () => {
 
   const [allScores, setAllScores] = useState([]);
 
-  const socket = useContext(SocketContext);
-  const navigate = useNavigate();
-  const location = useLocation();
-
   useEffect(() => {
-    const findRoundIDs = async () => {
+    const updateScores = async () => {
       const options = {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: localStorage.getItem("session"),
         },
+        body: JSON.stringify({
+          score: roundScore,
+        }),
       };
+
       try {
         const response = await fetch(
-          `${url}/rounds/${location.state.gameInfo.game_id}`,
+          `${url}/scores/${roundIDs[round]}`,
           options
         );
         const data = await response.json();
-        const roundIDs = data.map((r) => r.round_id);
         if (response.status == 200) {
-          setRoundIDs(roundIDs);
+          console.log(data);
         }
       } catch (err) {
         console.warn(err);
       }
     };
 
-    findRoundIDs();
-  }, []);
+    const callUpdateScores = async () => {
+      await updateScores();
+    };
 
-  useEffect(() => {
-    // const updateScores = async () => {
-    //   const options = {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: localStorage.getItem("session"),
-    //     },
-    //     body:
-    //   }
-    // }
-  }, [roundIDs]);
+    callUpdateScores();
+  }, [roundScore]);
 
   useEffect(() => {
     socket.on("wait-for-others", (usersCompleted, totalUsers) => {
@@ -108,6 +104,12 @@ const GamePage = () => {
     });
 
     socket.on("redirect-to-results", (finalScores) => {
+      setAllScores(
+        finalScores.sort((a, b) => {
+          return b.userscore - a.userscore;
+        })
+      );
+
       setShowModal(false);
       setShowResultModal(true);
       setTimeout(() => {
@@ -148,6 +150,7 @@ const GamePage = () => {
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
+    setRoundScore(score);
     setUserComplete(true);
     setUserScore(userscore + score);
     setShowModal(true);
@@ -161,6 +164,7 @@ const GamePage = () => {
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
+    setRoundScore(score);
     setUserComplete(true);
     setUserScore(userscore + score);
     setShowModal(true);

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SocketContext } from "../../socket";
 
-import './styles.css'
+import "./styles.css";
 
 const ResultsPage = () => {
   const socket = useContext(SocketContext);
@@ -37,9 +37,7 @@ const ResultsPage = () => {
   };
 
   return (
-
     <div className="result-page">
-
       {won ? (
         <h1 className="winner-loser-message">Winner winner chicken dinner</h1>
       ) : (
@@ -47,15 +45,19 @@ const ResultsPage = () => {
       )}
       <h1 className="final-result-message">Final Results...</h1>
       <ul className="final-score">
-        {orderedScores.map((finalScore) => {
+        {orderedScores.map((finalScore, i) => {
           return (
-            <li>
+            <li key={i}>
               {finalScore.username}: {finalScore.userscore}/30
             </li>
           );
         })}
       </ul>
-      <button onClick={handleLeaveGame} className="leave-game-button" type="button">
+      <button
+        onClick={handleLeaveGame}
+        className="leave-game-button"
+        type="button"
+      >
         Leave game
       </button>
     </div>

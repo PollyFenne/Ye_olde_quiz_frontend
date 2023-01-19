@@ -31,7 +31,7 @@ const CreatePage = () => {
   const [roundTwoTopic, setRoundTwoTopic] = useState("");
   const [roundThreeTopic, setRoundThreeTopic] = useState("");
 
-  const [easyActive, setEasyActive] = useState(false);
+  const [easyActive, setEasyActive] = useState(true);
   const [mediumActive, setMediumActive] = useState(false);
   const [hardActive, setHardActive] = useState(false);
 
