@@ -4,6 +4,8 @@
 
 Ye Olde Quiz is a quiz website inspired by everyone's favorite activity...a Pub Quiz!
 
+This app makes use of the [Open Trivia Database](https://opentdb.com/)
+
 ## Motivation :muscle:
 
 This project is part of the futureproof curriculum for LAP 3 project. We were tasked with the creation of a quiz website.
@@ -27,6 +29,9 @@ You can find the repository for the connected API [here](https://github.com/shed
 ## Technologies :desktop_computer:
 
 - React
+- Babel
+- Axios
+- Webpack
 - Javascript
 - CSS
 - [Socket.io](https://socket.io/)
@@ -52,6 +57,18 @@ You can find the repository for the connected API [here](https://github.com/shed
 None so far :crossed_fingers:
 
 ## Future Features :timer_clock:
+
+### Displaying questions 1 by 1
+
+Currently each round is displayed as one form with all the questions for that round to aid with simplicity.
+
+A future feature would be to impliment functionality that allows each question to be displayed, then the answer for that question, and then for the next question appear.
+
+### Choosing type of question
+
+The API has two types of questions: multiple choice and true/false. Currently users don't have an option for choosing the type of question they want and there will just be a mix.
+
+A feature feature would be to allow users to select just one type of question or to have a mix
 
 ## Contributors
 
