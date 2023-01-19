@@ -18,12 +18,13 @@ You can find the repository for the connected API [here](https://github.com/shed
 
 ### Installation :inbox_tray:
 
-- Clone or download this repository.
+- Clone or download this repository
 - `npm install` to install the dependencies
-- Ensure the server in the [backend repository](https://github.com/shedp/YeOldeQuizzBackend) is running.
 
 ### Usage :open_file_folder:
 
+- `npm run dev` to run the UI
+- Ensure the server in the [backend repository](https://github.com/shedp/YeOldeQuizzBackend) is running
 - In your chosen browser (Chrome recommended) navigate to 'http://localhost:8080'
 
 ## Technologies :desktop_computer:
