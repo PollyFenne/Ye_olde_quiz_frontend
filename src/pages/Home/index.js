@@ -1,6 +1,6 @@
 // HOMEPAGE
 
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Banner from "../../components/Banner";
@@ -8,12 +8,17 @@ import Banner from "../../components/Banner";
 import ButtonControl from "../../components/ButtonControl";
 import HighScoreCard from "../../components/HighScoreCard";
 import LastActiveCard from "../../components/LastActiveCard";
-
+import { SocketContext } from "../../socket";
 import "./Home.css";
 
 const Home = () => {
   const sessionToken = localStorage.getItem("session");
+  const socket = useContext(SocketContext);
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   socket.emit("")
+  // })
 
   const createQuiz = () => {
     if (sessionToken) navigate("/create");

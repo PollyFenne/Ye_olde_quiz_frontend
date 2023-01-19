@@ -12,6 +12,7 @@ const url = "http://localhost:3000";
 
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
+  // const [username, setUsername] = useState(null);
   const [users, setUsers] = useState([]);
   const [startGame, setStartGame] = useState(false);
   //get admin_id from data
@@ -20,12 +21,11 @@ const WaitingLobby = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // console.log(location.state);
-  const gameInfo = location.state;
+  console.log(location.state);
+  const gameInfo = location.state.createGameInfo;
   // console.log("lobby", gameInfo);
-  const joinCode = location.state.join_code;
-
-  // console.log("admin", admin);
+  const username = location.state.username;
+  const joinCode = location.state.createGameInfo.join_code;
 
   useEffect(() => {
     socket.on("set-admin", (isAdmin) => {
@@ -40,10 +40,10 @@ const WaitingLobby = () => {
       navigate("/join");
     });
 
-    socket.on("update-users", (socketIDs) => {
+    socket.on("update-users", (users) => {
       // console.log("new socket ids", socketIDs);
       // console.log(socketIds);
-      setUsers(socketIDs);
+      setUsers(users);
     });
 
     // socket.on("game-starting", () => {
@@ -54,7 +54,7 @@ const WaitingLobby = () => {
   useEffect(() => {
     socket.on("game-starting", () => {
       // console.log("handleStartGame");
-      navigate("/game", { state: { gameInfo, admin } });
+      navigate("/game", { state: { gameInfo, admin, username } });
     });
   }, [startGame]);
 
@@ -66,7 +66,7 @@ const WaitingLobby = () => {
     await socket.emit("start-game", gameInfo);
     setStartGame(true);
 
-    navigate("/game", { state: { gameInfo, admin } });
+    navigate("/game", { state: { gameInfo, admin, username } });
   };
 
   return (
