@@ -3,6 +3,9 @@
 .question-form {
   background-color: var(--vintagewhite);
   text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--vintagered);
 }
 
 .QA {
@@ -21,20 +24,31 @@
   color: var(--vintagered);
 }
 
-/* Submit button */
+.choices {
+  height: 40px;
+  display: inline-block;
+}
 
-question-form button {
+/* Next Round button */
+
+.question-form button {
   color: var(--vintagered);
+  background-color: var(--vintagewhite);
   border: 2px solid var(--vintagered);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-.question-form {
-  margin: 1rem;
-  padding: 1rem;
-  border: 2px solid var(--vintagered);
+.question-form button:hover {
+  color: var(--vintagewhite);
+  background-color: var(--vintagered);
 }
+
+/* Answer buttons */
+
 input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -101,7 +115,4 @@ input[type="radio"]:checked::after {
   }
 }
 
-.choices {
-  height: 40px;
-  display: inline-block;
-}
+

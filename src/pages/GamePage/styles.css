@@ -12,3 +12,9 @@
 .gameMainContent {
   background-color: var(--vintagewhite);
 }
+
+/* Time left styling */
+
+.time-left {
+  font-size: 1.2rem;
+}

@@ -48,6 +48,7 @@
 .register-btn,
 .login-btn {
   cursor: pointer;
+  color: var(--vintagered);
   margin: 20px auto;
   font-size: 1.5rem;
   font-family: "Lato", sans-serif;
@@ -56,4 +57,14 @@
   background-color: transparent;
   border: 2px solid var(--vintagered);
   border-radius: 15px;
+}
+
+.login-btn:hover {
+  background: var(--vintagered);
+  color: white;
+}
+
+.register-btn:hover {
+  background: var(--vintagered);
+  color: white;
 }

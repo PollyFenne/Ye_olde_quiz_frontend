@@ -33,7 +33,7 @@ const Timer = ({ handleTimerSubmit, isRoundComplete }) => {
     }
   }, [timeLeft, isTimeUp]);
 
-  return <div>Time left: {timeLeft} seconds</div>;
+  return <div className="time-left">Time left: {timeLeft} seconds</div>;
 };
 
 export default Timer;
