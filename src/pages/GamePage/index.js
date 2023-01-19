@@ -11,9 +11,12 @@ import ShowResultModal from "../../components/showResultModal";
 import { SocketContext } from "../../socket";
 import "./styles.css";
 
+const url = "http://localhost:3000";
+
 const GamePage = () => {
   const [round, setRound] = useState(1);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
+  const [roundIDs, setRoundIDs] = useState(null);
 
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
@@ -23,12 +26,51 @@ const GamePage = () => {
   const [waiting, setWaiting] = useState("");
 
   const [showResultModal, setShowResultModal] = useState(false);
-  const [showFinalScores, setFinal] = useState(false);
+
   const [allScores, setAllScores] = useState([]);
 
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const findRoundIDs = async () => {
+      const options = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("session"),
+        },
+      };
+      try {
+        const response = await fetch(
+          `${url}/rounds/${location.state.gameInfo.game_id}`,
+          options
+        );
+        const data = await response.json();
+        const roundIDs = data.map((r) => r.round_id);
+        if (response.status == 200) {
+          setRoundIDs(roundIDs);
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    };
+
+    findRoundIDs();
+  }, []);
+
+  useEffect(() => {
+    // const updateScores = async () => {
+    //   const options = {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: localStorage.getItem("session"),
+    //     },
+    //     body:
+    //   }
+    // }
+  }, [roundIDs]);
 
   useEffect(() => {
     socket.on("wait-for-others", (usersCompleted, totalUsers) => {
@@ -66,9 +108,13 @@ const GamePage = () => {
     });
 
     socket.on("redirect-to-results", (finalScores) => {
-      navigate("/results", {
-        state: { gameInfo: location.state.gameInfo, finalScores },
-      });
+      setShowModal(false);
+      setShowResultModal(true);
+      setTimeout(() => {
+        navigate("/results", {
+          state: { gameInfo: location.state.gameInfo, finalScores },
+        });
+      }, 3000);
     });
   }, [socket]);
 
@@ -96,6 +142,7 @@ const GamePage = () => {
   const handleSubmit = async (e, answers) => {
     e.preventDefault();
     console.log(answers);
+    setCorrectAnswers(answers);
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
     inputs.forEach((input) => {
@@ -106,7 +153,9 @@ const GamePage = () => {
     setShowModal(true);
   };
 
-  const handleTimerSubmit = () => {
+  const handleTimerSubmit = (answers) => {
+    console.log(answers);
+    setCorrectAnswers(answers);
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
     inputs.forEach((input) => {
@@ -132,19 +181,25 @@ const GamePage = () => {
     <div className="gameMain">
       <Banner />
       <div className="gameMainContent">
-        <Timer
+        {/* <Timer
           handleTimerSubmit={handleTimerSubmit}
           isRoundComplete={isRoundComplete}
-        />
+        /> */}
         <FetchQuiz
           allInfo={location.state}
           handleSubmit={handleSubmit}
           round={round}
+          isRoundComplete={isRoundComplete}
+          handleTimerSubmit={handleTimerSubmit}
         />
       </div>
       {showModal && <Modal waiting={waiting} />}
       {showResultModal && (
-        <ShowResultModal scores={allScores} finalResults={showFinalScores} />
+        <ShowResultModal
+          scores={allScores}
+          round={round}
+          correctAnswers={correctAnswers}
+        />
       )}
     </div>
   );

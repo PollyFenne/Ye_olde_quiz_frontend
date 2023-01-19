@@ -35,7 +35,7 @@ const ResultsPage = () => {
   };
 
   return (
-    <>
+    <div className="modal">
       {won ? (
         <h1>Winner winner chicken dinner</h1>
       ) : (
@@ -46,7 +46,7 @@ const ResultsPage = () => {
         {orderedScores.map((finalScore) => {
           return (
             <li>
-              {finalScore.username}: {finalScore.userscore}
+              {finalScore.username}: {finalScore.userscore}/30
             </li>
           );
         })}
@@ -54,7 +54,7 @@ const ResultsPage = () => {
       <button onClick={handleLeaveGame} type="button">
         Leave game
       </button>
-    </>
+    </div>
   );
 };
 
