@@ -15,17 +15,29 @@ const WaitingLobby = () => {
   // const [username, setUsername] = useState(null);
   const [users, setUsers] = useState([]);
   const [startGame, setStartGame] = useState(false);
+  const [gameID, setGameID] = useState(null);
+  const [gotGameID, setGotGameID] = useState(false);
   //get admin_id from data
   const [admin, setAdmin] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.state);
+  // console.log(location.state);
   const gameInfo = location.state.createGameInfo;
   // console.log("lobby", gameInfo);
   const username = location.state.username;
   const joinCode = location.state.createGameInfo.join_code;
+
+  useEffect(() => {
+    if (admin) {
+      socket.emit("pass-game-id", {
+        game_id: location.state.createGameInfo.game_id,
+        join_code: joinCode,
+      });
+      console.log("emitted game id");
+    }
+  }, [users]);
 
   useEffect(() => {
     socket.on("set-admin", (isAdmin) => {
@@ -46,10 +58,30 @@ const WaitingLobby = () => {
       setUsers(users);
     });
 
+    socket.on("receive-game-id", (game_id) => {
+      console.log("received");
+      gameInfo.game_id = game_id;
+    });
+
+    console.log(gameInfo);
+
     // socket.on("game-starting", () => {
     //   navigate("/game");
     // });
   }, [socket]);
+
+  useEffect(() => {
+    const createScores = async () => {
+      // const options = {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: localStorage.getItem("session"),
+      //   },
+      //   body:
+      // }
+    };
+  }, [gotGameID]);
 
   useEffect(() => {
     socket.on("game-starting", () => {
