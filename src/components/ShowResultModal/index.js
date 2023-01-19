@@ -1,14 +1,15 @@
-// Results are each round
+// Scores and answers after each round
 
 import React from "react";
 import './styles.css'
+import decodeHtml from "../../utils/helpers";
 
 const ShowResultModal = ({ scores, round, correctAnswers }) => {
   const renderCorrectAnswers = () => {
     return (
       <ol>
         {correctAnswers.map((answer) => {
-          return <li>{answer}</li>;
+          return <li>{decodeHtml(answer)}</li>;
         })}
       </ol>
     );
@@ -16,44 +17,53 @@ const ShowResultModal = ({ scores, round, correctAnswers }) => {
 
   if (round == 1) {
     return (
-      <div className="modal">
-        <h1>Running total</h1>
-        <ul>
+      <div className="round-results-modal">
+        <h2>Running total:</h2>
+        <ul className="round-result-score">
           {scores.map((score, i) => (
             <li key={i}>
               {score.username}: {score.userscore}/10
             </li>
           ))}
         </ul>
-        {renderCorrectAnswers()}
+        <div className="correct-answers">
+          <h2>Answers:</h2>
+          {renderCorrectAnswers()}
+        </div>
       </div>
     );
   } else if (round == 2) {
     return (
-      <div className="modal">
-        <h1>Running total</h1>
-        <ul>
+      <div className="round-results-modal">
+        <h2>Running total:</h2>
+        <ul className="round-result-score">
           {scores.map((score, i) => (
             <li key={i}>
               {score.username}: {score.userscore}/20
             </li>
           ))}
         </ul>
-        {renderCorrectAnswers()}
+        <div className="correct-answers">
+          <h2>Answers:</h2>
+          {renderCorrectAnswers()}
+        </div>
       </div>
     );
   } else if (round == 3) {
     return (
-      <div className="modal">
-        <h1>Running total</h1>
-        <ul>
+      <div className="round-results-modal">
+        <h2>Running total:</h2>
+        <ul className="round-result-score">
           {scores.map((score, i) => (
             <li key={i}>
               {score.username}: {score.userscore}/30
             </li>
           ))}
         </ul>
-        {renderCorrectAnswers()}
+        <div className="correct-answers">
+          <h2>Answers:</h2>
+          {renderCorrectAnswers()}
+        </div>
       </div>
     );
   }
