@@ -61,6 +61,7 @@ p {
   font-weight: bold;
   border-radius: 15px;
   padding: 15px;
+  margin-top: 15px;
 }
 
 .leave-lobby-button:hover {
