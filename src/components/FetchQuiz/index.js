@@ -28,6 +28,14 @@ const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
       .catch((err) => console.log(err));
   };
 
+  // // inbetween rounds reset choices
+  // useEffect(() => {
+  //   if (round > 1) {
+  //     console.log("hi");
+  //     document.querySelectorAll("input[type=radio]:checked").checked = false;
+  //   }
+  // }, []);
+
   // Getting the round data only for the admin
   useEffect(() => {
     // console.log(allInfo);

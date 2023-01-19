@@ -4,8 +4,15 @@ import React, { createContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
-import Banner from "./components/Banner";
-import { Home, CreatePage, JoinPage, NotFound, WaitingLobby, GamePage } from "./pages";
+import {
+  Home,
+  CreatePage,
+  JoinPage,
+  NotFound,
+  WaitingLobby,
+  GamePage,
+  ResultsPage,
+} from "./pages";
 import LoginRegister from "./pages/LoginRegister";
 import useToken from "./components/useToken";
 import { SocketContext, socket } from "./socket";
@@ -27,6 +34,7 @@ const App = () => {
           <Route exact path="/join" element={<JoinPage />} />
           <Route exact path="/waiting-lobby" element={<WaitingLobby />} />
           <Route exact path="/game" element={<GamePage />} />
+          <Route exact path="/results" element={<ResultsPage />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </SocketContext.Provider>

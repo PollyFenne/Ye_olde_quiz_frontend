@@ -15,7 +15,7 @@ const GamePage = () => {
   const [round, setRound] = useState(1);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
 
-  const [userComplete, setUserComplete] = useState(false)
+  const [userComplete, setUserComplete] = useState(false);
   const [userscore, setUserScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [waiting, setWaiting] = useState("");
@@ -36,7 +36,11 @@ const GamePage = () => {
     socket.on("next-round", (scores) => {
       socket.emit("leave-waiting", location.state.gameInfo.join_code);
 
-      setAllScores(scores.sort((a, b) => { return b.userscore - a.userscore}));
+      setAllScores(
+        scores.sort((a, b) => {
+          return b.userscore - a.userscore;
+        })
+      );
 
       console.log("testing");
       // Hide modal
@@ -47,26 +51,38 @@ const GamePage = () => {
         setUserComplete(false);
         setIsRoundComplete(true);
         setShowResultModal(false);
+        const buttons = document.querySelectorAll("input[type=radio]:checked");
+        buttons.forEach((button) => {
+          button.checked = false;
+        });
       }, 3000);
     });
 
     socket.on("waiting-for-scores", () => {
-      console.log("waiting for all scores")
-    })
+      console.log("waiting for all scores");
+    });
 
-    socket.on("all-scores", (finalScores) => {
-      setAllScores(finalScores.sort((a, b) => { return b.userscore - a.userscore}))
-      setFinal(true)
-      setShowResultModal(true)
-      setTimeout(() => {
-
-      }, 600000)
-    })
+    socket.on("redirect-to-results", (finalScores) => {
+      navigate("/results", {
+        state: { gameInfo: location.state.gameInfo, finalScores },
+      });
+    });
   }, [socket]);
 
   useEffect(() => {
-    if (userComplete) {
+    if (userComplete && round < 3) {
       socket.emit("user-complete", location.state.gameInfo.join_code, {
+        socket_id: socket.id,
+        userscore,
+      });
+    } else if (userComplete && round >= 3) {
+      console.log({
+        socket_id: socket.id,
+        userscore,
+      });
+
+      console.log("round > 3");
+      socket.emit("pass-finalscores", location.state.gameInfo.join_code, {
         socket_id: socket.id,
         userscore,
       });
@@ -80,7 +96,7 @@ const GamePage = () => {
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
-    setUserComplete(true)
+    setUserComplete(true);
     setUserScore(userscore + score);
     setShowModal(true);
   };
@@ -91,8 +107,8 @@ const GamePage = () => {
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
-    setUserComplete(true)
-    setUserScore(lastRoundScore + score);
+    setUserComplete(true);
+    setUserScore(userscore + score);
     setShowModal(true);
   };
 
@@ -102,13 +118,7 @@ const GamePage = () => {
 
   useEffect(() => {
     // if round >= 3 then quiz is done
-    if (round >= 3){
-      socket.emit("pass-finalscores", location.state.gameInfo.join_code, {
-        socket_id: socket.id,
-        userscore,
-      })
-    }
-    else if (isRoundComplete) {
+    if (isRoundComplete && round < 3) {
       setRound(round + 1);
     }
   }, [isRoundComplete]);
@@ -128,7 +138,9 @@ const GamePage = () => {
         />
       </div>
       {showModal && <Modal waiting={waiting} />}
-      {showResultModal && <ShowResultModal scores={allScores} finalResults={showFinalScores}/>}
+      {showResultModal && (
+        <ShowResultModal scores={allScores} finalResults={showFinalScores} />
+      )}
     </div>
   );
 };
