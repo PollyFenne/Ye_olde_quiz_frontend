@@ -13,6 +13,7 @@
   border-radius: 20px;
   height: 70%;
   flex-grow: 1;
+  font-size: 1.2rem;
 }
 
 .create-game-form {
@@ -34,12 +35,14 @@
 
 /* DIFFICULTY */
 
+
 .select-difficulty-container {
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  font-size: 1.3rem;
 }
 
 .difficulty-buttons-container {
@@ -56,7 +59,8 @@
   width: 100%;
   height: 50px;
   font-family: "Lato", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .easy-button {
@@ -132,11 +136,13 @@
   width: 100%;
   height: 50px;
   font-family: "Lato", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .round-button-easy {
   border: 2px solid var(--vintageblue);
+  color: var(--vintageblue);
 }
 
 .round-button-easy-active {
@@ -147,6 +153,7 @@
 
 .round-button-medium {
   border: 2px solid var(--vintageyellow);
+  color: var(--vintageyellow);
 }
 
 .round-button-medium-active {
@@ -157,6 +164,7 @@
 
 .round-button-hard {
   border: 2px solid var(--vintagered);
+  color: var(--vintagered);
 }
 
 .round-button-hard-active {
@@ -179,7 +187,7 @@
   padding: 15px;
   font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 15px;
   border: 2px solid var(--vintagered);
   cursor: pointer;
 }

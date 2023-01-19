@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SocketContext } from "../../socket";
 
+import './styles.css'
+
 const ResultsPage = () => {
   const socket = useContext(SocketContext);
   const location = useLocation();
@@ -35,14 +37,16 @@ const ResultsPage = () => {
   };
 
   return (
-    <div className="modal">
+
+    <div className="result-page">
+
       {won ? (
-        <h1>Winner winner chicken dinner</h1>
+        <h1 className="winner-loser-message">Winner winner chicken dinner</h1>
       ) : (
-        <h1>Loser, get smarter</h1>
+        <h1 className="winner-loser-message">Loser, get smarter</h1>
       )}
-      <h1>Final Results...</h1>
-      <ul>
+      <h1 className="final-result-message">Final Results...</h1>
+      <ul className="final-score">
         {orderedScores.map((finalScore) => {
           return (
             <li>
@@ -51,7 +55,7 @@ const ResultsPage = () => {
           );
         })}
       </ul>
-      <button onClick={handleLeaveGame} type="button">
+      <button onClick={handleLeaveGame} className="leave-game-button" type="button">
         Leave game
       </button>
     </div>

@@ -21,18 +21,3 @@
   margin: 10px;
 }
 
-button {
-  background: none;
-  border: 1px solid var(--vintagered);
-  color: var(--vintagered);
-  padding: 5px;
-  outline: inherit;
-  border-radius: 3px;
-  margin: 3px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: var(--vintagered);
-  color: white;
-}

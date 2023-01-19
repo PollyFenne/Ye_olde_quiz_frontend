@@ -3,7 +3,6 @@
 .banner {
   flex: 0, 1, auto;
   display: flex;
-  /* padding: 25px 30px 0; */
   background-color: var(--vintagewhite);
   padding: 15px;
 }
@@ -17,6 +16,10 @@
 .back-button {
   text-decoration: none;
   color: black;
+}
+
+.username {
+  font-size: 1.2rem;
 }
 
 .username h1 {
@@ -38,13 +41,14 @@
 
 .loginButtons button {
   background: none;
-  border: 1px solid var(--vintagered);
+  border: 2px solid var(--vintagered);
   color: var(--vintagered);
-  padding: 10px;
+  padding: 15px;
   outline: inherit;
-  border-radius: 3px;
+  border-radius: 15px;
   margin: 3px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .loginButtons button:hover {
