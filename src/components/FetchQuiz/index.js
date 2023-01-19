@@ -85,11 +85,22 @@ const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
     // });
   }, [socket]);
 
-  // console.log("quizdata", quizData);
+  console.log("quizdata", quizData);
+
+  const onSubmit = (e) => {
+    console.log(quizData);
+    handleSubmit(
+      e,
+      quizData.map((data) => {
+        console.log(data.correct_answer);
+        return data.correct_answer;
+      })
+    );
+  };
 
   return (
     <>
-      <form className="question-form" onSubmit={handleSubmit}>
+      <form className="question-form" onSubmit={onSubmit}>
         {quizData.map((data, i) => {
           // console.log("data", data);
           return (

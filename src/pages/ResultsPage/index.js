@@ -46,7 +46,7 @@ const ResultsPage = () => {
         {orderedScores.map((finalScore) => {
           return (
             <li>
-              {finalScore.socket_id}: {finalScore.userscore}
+              {finalScore.username}: {finalScore.userscore}
             </li>
           );
         })}
