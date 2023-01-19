@@ -37,7 +37,9 @@ const ResultsPage = () => {
   };
 
   return (
+
     <div className="result-page">
+
       {won ? (
         <h1 className="winner-loser-message">Winner winner chicken dinner</h1>
       ) : (
@@ -48,7 +50,7 @@ const ResultsPage = () => {
         {orderedScores.map((finalScore) => {
           return (
             <li>
-              {finalScore.username}: {finalScore.userscore}
+              {finalScore.username}: {finalScore.userscore}/30
             </li>
           );
         })}

@@ -4,7 +4,7 @@ const Timer = ({ handleTimerSubmit, isRoundComplete }) => {
   const [timeLeft, setTimeLeft] = useState(30);
   const [isTimeUp, setIsTimeUp] = useState(false);
 
-  console.log(isRoundComplete);
+  // console.log(isRoundComplete);
 
   useEffect(() => {
     if (isRoundComplete) {
