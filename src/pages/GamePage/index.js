@@ -15,6 +15,8 @@ const GamePage = () => {
   const [round, setRound] = useState(1);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
 
+  const [correctAnswers, setCorrectAnswers] = useState([]);
+
   const [userComplete, setUserComplete] = useState(false);
   const [userscore, setUserScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -58,8 +60,9 @@ const GamePage = () => {
       }, 3000);
     });
 
-    socket.on("waiting-for-scores", () => {
+    socket.on("waiting-for-scores", (usersSent, totalUsers) => {
       console.log("waiting for all scores");
+      setWaiting(`waiting for others... ${usersSent}/${totalUsers}`);
     });
 
     socket.on("redirect-to-results", (finalScores) => {
@@ -72,25 +75,27 @@ const GamePage = () => {
   useEffect(() => {
     if (userComplete && round < 3) {
       socket.emit("user-complete", location.state.gameInfo.join_code, {
-        socket_id: socket.id,
+        username: location.state.username,
         userscore,
       });
     } else if (userComplete && round >= 3) {
       console.log({
-        socket_id: socket.id,
+        username: location.state.username,
         userscore,
       });
 
       console.log("round > 3");
       socket.emit("pass-finalscores", location.state.gameInfo.join_code, {
+        username: location.state.username,
         socket_id: socket.id,
         userscore,
       });
     }
   }, [userComplete]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, answers) => {
     e.preventDefault();
+    console.log(answers);
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
     inputs.forEach((input) => {

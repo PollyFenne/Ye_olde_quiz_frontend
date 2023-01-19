@@ -33,10 +33,10 @@ const WaitingLobby = () => {
       setAdmin(isAdmin);
     });
 
-    socket.on("disconnect-user", (socket_id, message) => {
-      const findUser = [...users];
-      const newUsers = findUser.splice(findUser.indexOf(socket_id), 1);
-      setUsers(newUsers);
+    socket.on("disconnect-user", (socket_id, users) => {
+      // const findUser = [...users];
+      // const newUsers = findUser.splice(findUser.indexOf(socket_id), 1);
+      // setUsers(newUsers);
       navigate("/join");
     });
 
@@ -59,7 +59,7 @@ const WaitingLobby = () => {
   }, [startGame]);
 
   const handleLeave = async () => {
-    await socket.emit("leave-game", gameInfo);
+    await socket.emit("leave-game", gameInfo, username);
   };
 
   const handleStartGame = async () => {

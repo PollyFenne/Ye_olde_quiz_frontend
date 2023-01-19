@@ -9,7 +9,7 @@ const ShowResultModal = ({ scores, finalResults }) => {
       <ul>
         {scores.map((score, i) => (
           <li key={i}>
-            {score.socket_id}: {score.userscore}
+            {score.username}: {score.userscore}
           </li>
         ))}
       </ul>
