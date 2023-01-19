@@ -12,7 +12,7 @@
 
 html {
   background-image: url("../../assets/images/background.webp");
-  background-repeat: no-repeat;
+  background-repeat: round;
 }
 
 * {
@@ -26,7 +26,7 @@ html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5%;
 }
 

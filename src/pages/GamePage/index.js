@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import Banner from "../../components/Banner";
 import FetchQuiz from "../../components/FetchQuiz";
-import Timer from "../../components/Timer";
 import Modal from "../../components/Modal";
 import ShowResultModal from "../../components/showResultModal";
 import { SocketContext } from "../../socket";
@@ -101,7 +100,7 @@ const GamePage = () => {
 
     socket.on("waiting-for-scores", (usersSent, totalUsers) => {
       console.log("waiting for all scores");
-      setWaiting(`waiting for others... ${usersSent}/${totalUsers}`);
+      setWaiting(`Waiting for others... ${usersSent}/${totalUsers}`);
     });
 
     socket.on("redirect-to-results", (finalScores) => {

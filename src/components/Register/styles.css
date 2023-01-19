@@ -61,10 +61,10 @@
 
 .login-btn:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
 
 .register-btn:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
