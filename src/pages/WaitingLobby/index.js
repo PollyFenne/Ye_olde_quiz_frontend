@@ -186,7 +186,7 @@ const WaitingLobby = () => {
       </div>
       {admin && (
         <button onClick={handleStartGame} className="start-game-button">
-          Start Game
+          Start quiz!
         </button>
       )}
     </div>
