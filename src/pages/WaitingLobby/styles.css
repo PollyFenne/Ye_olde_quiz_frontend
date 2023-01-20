@@ -9,8 +9,9 @@
 }
 
 .joincode h1,
-.join-code p {
+.joincode p {
   text-align: center;
+  margin: 0px 3px;
 }
 
 p {
@@ -82,4 +83,35 @@ p {
 .start-game-button:hover {
   background: var(--vintagered);
   color: white;
+}
+
+@media (max-width: 770px) {
+  .leave-lobby-button, .start-game-button {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .leave-lobby-button, .start-game-button {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .leave-lobby-button, .start-game-button {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 470px) {
+  .leave-lobby-button, .start-game-button {
+    font-size: 0.6rem;
+    padding: 6px;
+  }
+  .joincode h1 {
+    font-size: 1.6rem
+  }
 }

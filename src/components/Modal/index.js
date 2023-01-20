@@ -6,7 +6,7 @@ const Modal = ({ waiting }) => {
   return (
     <>
       <div className="modal">
-        <h2>Thanks for submitting you answers</h2>
+        <h2>Thank you for submitting your answers</h2>
         <h3>{waiting}</h3>
       </div>
     </>

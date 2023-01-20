@@ -17,6 +17,7 @@
 /* Join code input */
 
 .joinMain .join-code input {
+  width: 100%;
   font-family: "Lato", sans-serif;
   background: none;
   border-top-style: hidden;
@@ -45,7 +46,7 @@
 
 /* Submit button */
 
-.joinMain button {
+.joinMain form button {
   background-color: var(--vintagewhite);
   color: var(--vintagered);
   font-family: "Lato", sans-serif;
@@ -58,7 +59,25 @@
   cursor: pointer;
 }
 
-.joinMain button:hover {
+.joinMain form button:hover {
   background-color: var(--vintagered);
   color: var(--vintagewhite);
+}
+
+@media (max-width: 610px) {
+  .joinMain .join-code input {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 520px) {
+  .joinMain .join-code input {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 450px) {
+  .joinMain .join-code input {
+    font-size: 35px;
+  }
 }
