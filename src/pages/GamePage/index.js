@@ -95,7 +95,7 @@ const GamePage = () => {
         buttons.forEach((button) => {
           button.checked = false;
         });
-      }, 3000);
+      }, 8000);
     });
 
     socket.on("waiting-for-scores", (usersSent, totalUsers) => {
@@ -116,7 +116,7 @@ const GamePage = () => {
         navigate("/results", {
           state: { gameInfo: location.state.gameInfo, finalScores, username },
         });
-      }, 3000);
+      }, 8000);
     });
   }, [socket]);
 
