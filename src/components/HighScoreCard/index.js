@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import "./styles.css";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const HighScoreCard = () => {
   const [highScore, setHighScore] = useState(null);

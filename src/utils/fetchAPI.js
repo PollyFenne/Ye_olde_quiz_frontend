@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 export const createGame = async (gameData) => {
   const options = {

@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./styles.css";
 import UsersList from "../../components/UsersList";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const WaitingLobby = () => {
   const socket = useContext(SocketContext);
@@ -121,7 +121,7 @@ const WaitingLobby = () => {
         }),
       };
       try {
-        const response = await fetch(`${url}/scores`, options);
+        const response = await fetch(`${url}/scores/`, options);
         const data = await response.json();
         if (response.status == 201) {
           console.log(data);

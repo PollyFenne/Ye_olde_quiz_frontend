@@ -4,7 +4,7 @@ import { SocketContext } from "../../socket";
 
 import "./styles.css";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const ResultsPage = () => {
   const socket = useContext(SocketContext);

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, createSearchParams } from "react-router-dom";
 import "./styles.css";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const Banner = ({ isHome, displayBack }) => {
   const navigate = useNavigate();

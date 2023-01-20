@@ -10,7 +10,7 @@ import { SocketContext } from "../../socket";
 import "./styles.css";
 import FetchQuiz from "../../components/FetchQuiz";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const CreatePage = () => {
   const socket = useContext(SocketContext);

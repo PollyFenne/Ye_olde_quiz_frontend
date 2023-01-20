@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import "./styles.css";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const LastActiveCard = () => {
   const [lastActive, setLastActive] = useState(null);

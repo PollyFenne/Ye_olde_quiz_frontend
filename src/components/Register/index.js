@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 const Register = ({ handleRedirect }) => {
   const navigate = useNavigate();

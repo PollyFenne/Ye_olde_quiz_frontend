@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import Banner from "../../components/Banner";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 function JoinPage() {
   const [joinCode, setJoinCode] = useState("");

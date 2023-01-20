@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 
-const url = "http://localhost:3000";
+const url = "https://yeoldequiz.onrender.com";
 
 // Fetching user data from API
 async function loginUser(username, password) {
