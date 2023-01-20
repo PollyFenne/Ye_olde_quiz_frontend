@@ -53,7 +53,76 @@
 
 .loginButtons button:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
+}
+
+@media (max-width: 675px) {
+  .loginButtons button {
+    padding: 10px;
+    margin: 3px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+  }
+  .username h1 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+  }
+  .logo img {
+    height: 100px;
+  }
+}
+
+@media (max-width: 565px) {
+  .loginButtons button {
+    padding: 8px;
+    margin: 2px;
+    font-size: 1rem;
+  }
+  .username h1 {
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+  }
+  .logo img {
+    height: 80px;
+  }
+}
+
+@media (max-width: 565px) {
+  .username h1 {
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+  }
+  .logo img {
+    margin-right: 15px;
+    height: 70px;
+  }
+  a h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 435px) {
+  .loginButtons button {
+    padding: 8px;
+    margin: 2px;
+    font-size: 0.8rem;
+    border-radius: 10px;
+  }
+  .username h1 {
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+  }
+  .logo img {
+    margin-right: 15px;
+    height: 70px;
+  }
+  a h3 {
+    font-size: 1rem;
+  }
+}
+.loginButtons button:hover {
+  background: var(--vintagered);
+  color: var(--vintagewhite);
 }
 
 @media (max-width: 675px) {

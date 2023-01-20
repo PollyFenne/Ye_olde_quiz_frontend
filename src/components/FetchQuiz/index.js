@@ -4,13 +4,18 @@ import axios from "axios";
 import { SocketContext } from "../../socket";
 import { convertLevel, convertTopics } from "../../utils/fetchAPI";
 import shuffleArray from "../ShuffleArray";
-import CleanData from "../CleanData";
 import decodeHtml from "../../utils/helpers";
 import Timer from "../Timer";
 import Modal from "../Modal";
 import "./styles.css";
 
-const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
+const FetchQuiz = ({
+  allInfo,
+  handleSubmit,
+  round,
+  isRoundComplete,
+  handleTimerSubmit,
+}) => {
   // console.log(round);
   const socket = useContext(SocketContext);
   const [quizData, setQuizData] = useState([]);
@@ -85,7 +90,7 @@ const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
     // });
   }, [socket]);
 
-  console.log("quizdata", quizData);
+  // console.log("quizdata", quizData);
 
   const onSubmit = (e) => {
     console.log(quizData);
@@ -98,8 +103,22 @@ const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
     );
   };
 
+  const onTimerSubmit = () => {
+    console.log(quizData);
+    handleTimerSubmit(
+      quizData.map((data) => {
+        console.log(data.correct_answer);
+        return data.correct_answer;
+      })
+    );
+  };
+
   return (
     <>
+      <Timer
+        handleTimerSubmit={onTimerSubmit}
+        isRoundComplete={isRoundComplete}
+      />
       <form className="question-form" onSubmit={onSubmit}>
         {quizData.map((data, i) => {
           // console.log("data", data);
@@ -110,13 +129,13 @@ const FetchQuiz = ({ allInfo, handleSubmit, round }) => {
                 {data.options.map((choice, j) => {
                   return (
                     <div className="choice">
+                      <label>{choice}</label>
                       <input
                         type="radio"
                         value={choice == data.correct_answer ? 1 : 0}
                         key={j}
                         name={data.question}
                       />
-                      <label>{choice}</label>
                     </div>
                   );
                 })}

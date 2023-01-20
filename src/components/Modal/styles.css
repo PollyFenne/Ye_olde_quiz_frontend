@@ -1,12 +1,15 @@
-.modal {
+/* Thanks for submitting answers modal styling */
+
+.submit-answers-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   min-height: 100vh;
   margin: 0px;
-  background-color: rgb(255, 243, 227, 0.7);
+  background-color: rgb(255, 243, 227, 0.85);
   z-index: 10;
   text-align: center;
   padding-top: 20%;
+  font-family: "Lato", sans-serif;
 }

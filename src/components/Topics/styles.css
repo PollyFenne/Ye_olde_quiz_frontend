@@ -50,34 +50,34 @@
 }
 
 @media (max-width: 1090px) {
-  .topic-button-easy {
-    font-size: 0.9rem;
+  .topic-button {
+    font-size: 1rem;
   }
 }
 
 @media only screen and (max-width: 850px) {
   .topics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (max-width: 850px) {
   .topics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (max-width: 700px) {
   .topics {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .topic-button-easy {
+  .topic-button {
     font-size: 0.7rem;
   }
 }
@@ -87,7 +87,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
-  .topic-button-easy {
+  .topic-button {
     font-size: 1rem;
   }
 }

@@ -7,7 +7,7 @@ import Banner from "../../components/Banner";
 
 import ButtonControl from "../../components/ButtonControl";
 import HighScoreCard from "../../components/HighScoreCard";
-import LastActiveCard from "../../components/LastActiveCard";
+
 import { SocketContext } from "../../socket";
 import "./Home.css";
 
@@ -43,7 +43,6 @@ const Home = () => {
         </div>
         <div className="cards">
           <HighScoreCard />
-          <LastActiveCard />
         </div>
       </div>
     </div>

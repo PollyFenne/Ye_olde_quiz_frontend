@@ -13,7 +13,7 @@ import FetchQuiz from "../../components/FetchQuiz";
 const url = "http://localhost:3000";
 
 const CreatePage = () => {
-  const io = useContext(SocketContext);
+  const socket = useContext(SocketContext);
   const navigate = useNavigate();
 
   const [gameInfo, setGameInfo] = useState(null);
@@ -31,7 +31,7 @@ const CreatePage = () => {
   const [roundTwoTopic, setRoundTwoTopic] = useState("");
   const [roundThreeTopic, setRoundThreeTopic] = useState("");
 
-  const [easyActive, setEasyActive] = useState(false);
+  const [easyActive, setEasyActive] = useState(true);
   const [mediumActive, setMediumActive] = useState(false);
   const [hardActive, setHardActive] = useState(false);
 
@@ -145,7 +145,7 @@ const CreatePage = () => {
 
   useEffect(() => {
     if (username) {
-      io.emit("create-game", { gameInfo: createGameInfo, username });
+      socket.emit("create-game", { gameInfo: createGameInfo, username });
       navigate("/waiting-lobby", {
         state: { createGameInfo, username },
       });

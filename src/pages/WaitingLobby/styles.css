@@ -11,7 +11,7 @@
 .joincode h1,
 .joincode p {
   text-align: center;
-  margin: 0px 3px;
+  margin-bottom: 8px;
 }
 
 p {
@@ -20,7 +20,7 @@ p {
 
 .joincode {
   border-bottom: 1px solid var(--vintagered);
-  padding: 2rem 0rem;
+  padding: 0 0 30px;
 }
 
 .lobby {
@@ -29,7 +29,7 @@ p {
 
 /* SUBMIT */
 
-.submit-button {
+/* .submit-button {
   background-color: var(--vintagewhite);
   color: var(--vintagered);
   font-family: "Lato", sans-serif;
@@ -40,7 +40,7 @@ p {
   border-radius: 20px;
   border: 2px solid var(--vintagered);
   cursor: pointer;
-}
+} */
 
 .submit-button:hover {
   background-color: var(--vintagered);
@@ -62,11 +62,12 @@ p {
   font-weight: bold;
   border-radius: 15px;
   padding: 15px;
+  margin-top: 15px;
 }
 
 .leave-lobby-button:hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
 
 .start-game-button {
@@ -82,14 +83,7 @@ p {
 
 .start-game-button:hover {
   background: var(--vintagered);
-  color: white;
-}
-
-@media (max-width: 770px) {
-  .leave-lobby-button, .start-game-button {
-    font-size: 1.2rem;
-    padding: 10px;
-  }
+  color: var(--vintagewhite);
 }
 
 @media (max-width: 600px) {

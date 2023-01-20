@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 0 0 30px;
   /* font-size: 1.3rem; */
 }
 
@@ -187,7 +187,7 @@
   padding: 15px;
   font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 2px solid var(--vintagered);
   cursor: pointer;
 }
@@ -200,46 +200,48 @@
 @media (max-width: 900px) {
   .title-heading {
     font-size: 2rem;
-}
   }
+}
 
 @media (max-width: 785px) {
   .title-heading {
     font-size: 1.8rem;
   }
 }
-  
+
 @media (max-width: 760px) {
-.title-heading {
-  font-size: 1.5rem;
-  padding: 20px
+  .title-heading {
+    font-size: 1.5rem;
+    padding: 20px;
   }
-.create-game-form{
-  padding: 0 20px
+  .create-game-form {
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 700px) {
+
   .round-button, .difficulty-button {
   font-size: 1rem;
   }
-  }
+}
 
 @media (max-width: 570px) {
-  .difficulty-button{
-    font-size: 0.8rem;
+  .round-button,
+  .difficulty-button {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 515px) {
   .title-heading {
     font-size: 1.1rem;
-    padding: 10px
-    }
-  .create-game-form{
-    padding: 0 10px
-    }
-  .round-button{
+    padding: 10px;
+  }
+  .create-game-form {
+    padding: 0 10px;
+  }
+  .round-button {
     font-size: 0.8rem;
   }
 }
@@ -247,7 +249,6 @@
 @media (max-width: 460px) {
   .select-difficulty-container {
     padding: 1.5rem;
-
   }
 }
 
@@ -255,4 +256,9 @@
   .select-difficulty-container {
     padding: 1rem;
   }
+}
+
+.submit-button:hover {
+  background-color: var(--vintagered);
+  color: var(--vintagewhite);
 }

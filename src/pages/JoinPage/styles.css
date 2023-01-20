@@ -34,7 +34,7 @@
 
 .joinMain .join-code input :hover {
   background: var(--vintagered);
-  color: white;
+  color: var(--vintagewhite);
 }
 
 /* Label  */

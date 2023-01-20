@@ -5,15 +5,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import Banner from "../../components/Banner";
 import FetchQuiz from "../../components/FetchQuiz";
-import Timer from "../../components/Timer";
 import Modal from "../../components/Modal";
 import ShowResultModal from "../../components/showResultModal";
 import { SocketContext } from "../../socket";
 import "./styles.css";
 
+const url = "http://localhost:3000";
+
 const GamePage = () => {
+  const socket = useContext(SocketContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const username = location.state.username;
+
   const [round, setRound] = useState(1);
   const [isRoundComplete, setIsRoundComplete] = useState(false);
+  const [roundIDs, setRoundIDs] = useState(location.state.round_ids);
+  const [roundScore, setRoundScore] = useState(0);
 
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
@@ -23,12 +31,42 @@ const GamePage = () => {
   const [waiting, setWaiting] = useState("");
 
   const [showResultModal, setShowResultModal] = useState(false);
-  const [showFinalScores, setFinal] = useState(false);
+
   const [allScores, setAllScores] = useState([]);
 
-  const socket = useContext(SocketContext);
-  const navigate = useNavigate();
-  const location = useLocation();
+  useEffect(() => {
+    const updateScores = async () => {
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("session"),
+        },
+        body: JSON.stringify({
+          score: roundScore,
+        }),
+      };
+
+      try {
+        const response = await fetch(
+          `${url}/scores/${roundIDs[round]}`,
+          options
+        );
+        const data = await response.json();
+        if (response.status == 200) {
+          console.log(data);
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    };
+
+    const callUpdateScores = async () => {
+      await updateScores();
+    };
+
+    callUpdateScores();
+  }, [roundScore]);
 
   useEffect(() => {
     socket.on("wait-for-others", (usersCompleted, totalUsers) => {
@@ -62,13 +100,23 @@ const GamePage = () => {
 
     socket.on("waiting-for-scores", (usersSent, totalUsers) => {
       console.log("waiting for all scores");
-      setWaiting(`waiting for others... ${usersSent}/${totalUsers}`);
+      setWaiting(`Waiting for others... ${usersSent}/${totalUsers}`);
     });
 
     socket.on("redirect-to-results", (finalScores) => {
-      navigate("/results", {
-        state: { gameInfo: location.state.gameInfo, finalScores },
-      });
+      setAllScores(
+        finalScores.sort((a, b) => {
+          return b.userscore - a.userscore;
+        })
+      );
+
+      setShowModal(false);
+      setShowResultModal(true);
+      setTimeout(() => {
+        navigate("/results", {
+          state: { gameInfo: location.state.gameInfo, finalScores, username },
+        });
+      }, 3000);
     });
   }, [socket]);
 
@@ -96,22 +144,27 @@ const GamePage = () => {
   const handleSubmit = async (e, answers) => {
     e.preventDefault();
     console.log(answers);
+    setCorrectAnswers(answers);
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
+    setRoundScore(score);
     setUserComplete(true);
     setUserScore(userscore + score);
     setShowModal(true);
   };
 
-  const handleTimerSubmit = () => {
+  const handleTimerSubmit = (answers) => {
+    console.log(answers);
+    setCorrectAnswers(answers);
     let score = 0;
     const inputs = document.querySelectorAll("input[type=radio]:checked");
     inputs.forEach((input) => {
       score += parseInt(input.value);
     });
+    setRoundScore(score);
     setUserComplete(true);
     setUserScore(userscore + score);
     setShowModal(true);
@@ -132,19 +185,25 @@ const GamePage = () => {
     <div className="gameMain">
       <Banner />
       <div className="gameMainContent">
-        <Timer
+        {/* <Timer
           handleTimerSubmit={handleTimerSubmit}
           isRoundComplete={isRoundComplete}
-        />
+        /> */}
         <FetchQuiz
           allInfo={location.state}
           handleSubmit={handleSubmit}
           round={round}
+          isRoundComplete={isRoundComplete}
+          handleTimerSubmit={handleTimerSubmit}
         />
       </div>
       {showModal && <Modal waiting={waiting} />}
       {showResultModal && (
-        <ShowResultModal scores={allScores} finalResults={showFinalScores} />
+        <ShowResultModal
+          scores={allScores}
+          round={round}
+          correctAnswers={correctAnswers}
+        />
       )}
     </div>
   );

@@ -3,8 +3,29 @@
 .result-page {
     font-family: 'Lato', san serif;
     font-size: 2rem;
-    color: var(--vintagered);
+    background-color: var(--vintagewhite);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
 }
+
+.winner-loser-message {
+    font-size: 3rem;
+    padding: 20px;
+}
+
+.final-result-message {
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+
+.final-score {
+    list-style: none;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--vintagered);
+}
+
+/* Leave game button */
 
 .leave-game-button {
     cursor: pointer;
@@ -18,3 +39,9 @@
     border: 2px solid var(--vintagered);
     border-radius: 15px;
 }
+
+.leave-game-button:hover {
+    background-color: var(--vintagered);
+    color: var(--vintagewhite);
+}
+
