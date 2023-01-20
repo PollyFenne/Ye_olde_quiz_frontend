@@ -57,10 +57,11 @@ const Banner = ({ isHome, displayBack }) => {
     getUsername();
   });
 
+
   return (
     <div className="banner">
       <div className="logo">
-        <img src="../../../public/assets/Logo1.png" alt="Logo" height={"130px"} />
+        <img src="../../../assets/images/Logo1.png" alt="Logo" height={"130px"} />
       </div>
       <div className="username">
         {username ? (
